@@ -1,0 +1,4 @@
+rootProject.name = 'sp-subscribe-server'
+include 'sp-subscribe-api'
+include 'sp-subscribe-web'
+

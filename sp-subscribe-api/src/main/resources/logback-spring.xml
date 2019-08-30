@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="main-log" value="log/subscribe-sdk.%d{yyyy-MM-dd}.log"/>
+    <property name="error-log" value="log/subscribe-sdk-error.%d{yyyy-MM-dd}.log"/>
+    <property name="sql-log" value="log/subscribe-sdk-sql.%d{yyyy-MM-dd}.log"/>
+
+    <property name="log-pattern-console"
+              value="%d{HH:mm:ss.SSS} %highlight(%-5level) [%15.15thread] %cyan(%-40.40logger{36}) : %msg %n"/>
+    <property name="log-pattern-file" value="%d{HH:mm:ss.SSS} %-5level [%15.15thread] %-40.40logger{36} : %msg %n"/>
+
+    <!-- output to file -->
+    <springProfile name="dev, prod">
+        <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>INFO</level>
+            </filter>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${main-log}</fileNamePattern>
+                <maxHistory>14</maxHistory>
+            </rollingPolicy>
+            <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+            <!--<level>INFO</level>-->
+            <!--</filter>-->
+            <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <level>ERROR</level>
+                <onMatch>DENY</onMatch>
+            </filter>-->
+            <encoder>
+                <pattern>${log-pattern-file}</pattern>
+            </encoder>
+        </appender>
+        <!-- total error file -->
+        <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <level>ERROR</level>
+            </filter>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${error-log}</fileNamePattern>
+                <maxHistory>14</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${log-pattern-file}</pattern>
+            </encoder>
+        </appender>
+        <!-- total sql file -->
+        <appender name="sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${sql-log}</fileNamePattern>
+                <maxHistory>14</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>${log-pattern-file}</pattern>
+            </encoder>
+        </appender>
+    </springProfile>
+
+    <root level="INFO">
+        <appender-ref ref="file"/>
+        <appender-ref ref="error"/>
+    </root>
+
+    <springProfile name="dev">
+        <logger name="com.solid.subscribe.dao" level="DEBUG" additivity="false">
+            <appender-ref ref="sql"/>
+        </logger>
+
+        <!-- output to console -->
+        <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${log-pattern-console}</pattern>
+            </encoder>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="console"/>
+        </root>
+    </springProfile>
+</configuration>
