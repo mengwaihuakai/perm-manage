@@ -10,7 +10,7 @@ public interface TaskStepsDao {
     @Select("select `offer_id`, `step`, `type`, `url`, `next_on`, `js` from t_task_steps " +
             "where offer_id=#{offerId} " +
             "order by step limit 1")
-    TaskSteps selectMinStepRecordByOfferId(Integer offerId);
+    TaskSteps selectFirstStepRecordByOfferId(Integer offerId);
 
     @Select("select `offer_id`, `step`, `type`, `url`, `next_on`, `js` from t_task_steps " +
             "where offer_id=#{offerId} and step > #{step} " +

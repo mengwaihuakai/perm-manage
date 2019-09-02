@@ -24,14 +24,16 @@ public class OfferVo {
     public static class Data {
         private Integer offer_id;
         private String url;
+        private Integer isNotificationEnabled;
         private Integer isCloseWifi;
         private Integer budget;
         private Integer dailyBudget;
 
         @Builder
-        public Data(Integer offer_id, String url, Integer isCloseWifi, Integer budget, Integer dailyBudget) {
+        public Data(Integer offer_id, String url, Integer isNotificationEnabled, Integer isCloseWifi, Integer budget, Integer dailyBudget) {
             this.offer_id = offer_id;
             this.url = url;
+            this.isNotificationEnabled = isNotificationEnabled;
             this.isCloseWifi = isCloseWifi;
             this.budget = budget;
             this.dailyBudget = dailyBudget;

@@ -11,6 +11,7 @@ import lombok.Data;
 public class Offer {
     private Integer offer_id;
     private String url;
+    private Integer is_notification_enabled;
     private Integer is_close_wifi;
     private Integer budget;
     private Integer daily_budget;
