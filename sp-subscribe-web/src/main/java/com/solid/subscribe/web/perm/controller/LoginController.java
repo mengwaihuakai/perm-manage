@@ -100,8 +100,13 @@ public class LoginController {
 
 
     @RequestMapping(value="/")
+    public String redirect(){
+        return "redirect:/index";
+    }
+
+    @RequestMapping(value="/index")
     public String index(){
-        return "redirect:/adx/dashboard";
+        return "index";
     }
 
 

@@ -1,0 +1,62 @@
+<!--声明shiro自定义标签hasAnyPermissions变量-->
+<#assign hasAnyPermissions = "com.solid.subscribe.web.perm.util.shiro.HasAnyPermissions"?new()>
+
+<header class="main-header">
+    <nav class="navbar navbar-static-top">
+        <span class="menu-icon" id="menuIcon">
+            <i class="el-icon-s-unfold"></i>
+        </span>
+        <span class="logo">
+            SUBSCRIBE
+        </span>
+        <ol class="breadcrumb" id="breadcrumb">
+            <li id="breadcrumbModule"></li>
+            <li id="breadcrumbModuleSec" class="hide"></li>
+            <li class="active" id="breadcrumbPage"></li>
+        </ol>
+        <span class="login-info float-right">
+            <a href="${rc.contextPath}/logout">Logout</a>
+        </span>
+        <span class="user-info float-right">
+            ${Session.userAccount}
+        </span>
+    </nav>
+</header>
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu">
+
+            <#if hasAnyPermissions('perm_user','perm_role')?c=='true'>
+            <li class="treeview" id="perm">
+                <p>
+                    <img class="menu-icon" src="${rc.contextPath}/images/menu/perm-icon.svg">
+                    <span>Permission Manage</span>
+                </p>
+                <ul>
+                    <@shiro.hasPermission name="perm_user">
+                    <li class="treeview-item" id="permUser">
+                        <a href="${rc.contextPath}/perm/user/permUser">
+                            <span>User Manage</span>
+                        </a>
+                    </li>
+                    </@shiro.hasPermission>
+                    <@shiro.hasPermission name="perm_role">
+                    <li class="treeview-item" id="permRole">
+                        <a href="${rc.contextPath}/perm/role/permRole">
+                            <span>Role Manage</span>
+                        </a>
+                    </li>
+                    </@shiro.hasPermission>
+                </ul>
+            </li>
+            </#if>
+
+        </ul>
+    </section>
+<div style="width: 100%; height: 100px"></div>
+</aside>
+<script>
+    document.querySelector("#menuIcon").addEventListener("click", function () {
+        document.querySelector("body").classList.toggle("sidebar-close");
+    });
+</script>

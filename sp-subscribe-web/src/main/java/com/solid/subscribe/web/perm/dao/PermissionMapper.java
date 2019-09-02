@@ -4,6 +4,7 @@ package com.solid.subscribe.web.perm.dao;
 import com.solid.subscribe.web.perm.entity.Permission;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,4 +13,5 @@ import java.util.Set;
 @Mapper
 public interface PermissionMapper {
     Set<Permission> getPermissionsByRoleId(Integer roleId);
+    List<Permission> getValidPermissions();
 }

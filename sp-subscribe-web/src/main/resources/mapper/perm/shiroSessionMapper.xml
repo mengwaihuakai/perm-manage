@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//com.solidunion.perm.mapper.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solid.subscribe.web.perm.dao.ShiroSessionMapper">
+
+    <insert id="createSession" parameterType="com.solid.subscribe.web.perm.entity.ShiroSession" useGeneratedKeys="true" keyProperty="session">
+        insert into perm_shiro_session
+        (id, session, startTimestamp, lastAccessTime, timeout, host)
+        values
+        (#{id}, #{session}, #{startTimestamp}, #{lastAccessTime}, #{timeout}, #{host})
+    </insert>
+
+    <delete id="deleteSession" parameterType="String">
+        delete
+        from perm_shiro_session
+        where id = #{id}
+    </delete>
+
+    <select id="querySessionById" parameterType="com.solid.subscribe.web.perm.entity.ShiroSession" resultType="String">
+        select
+        session
+        from perm_shiro_session
+        where id =#{id}
+    </select>
+
+    <update id="updateShiroSession" parameterType="com.solid.subscribe.web.perm.entity.ShiroSession">
+        update perm_shiro_session
+        set
+        id = #{id},
+        session =#{session},
+        startTimestamp = #{startTimestamp},
+        lastAccessTime = #{lastAccessTime},
+        timeout = #{timeout},
+        host = #{host}
+        where id=#{id}
+    </update>
+</mapper>
