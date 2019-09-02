@@ -30,8 +30,6 @@ public class User implements Serializable {
     @NotBlank(message="密码不可以为空")
     @Length(min=1,max=255,message="密码长度不可以超过255")
     private String password;
-    /*invid*/
-    private String invid;
     /*状态*/
     @NotNull(message="状态不可以为空")
     @Min(value=0,message="用户状态不合法")
@@ -64,14 +62,6 @@ public class User implements Serializable {
 
     public void setAccount(String account) {
         this.account = account;
-    }
-
-    public String getInvid() {
-        return invid;
-    }
-
-    public void setInvid(String invid) {
-        this.invid = invid;
     }
 
     public String getPassword() {
@@ -128,7 +118,6 @@ public class User implements Serializable {
                 "id=" + id +
                 ", account='" + account + '\'' +
                 ", password='" + password + '\'' +
-                ", invid='" + invid + '\'' +
                 ", status=" + status +
                 ", lastLoginTime=" + lastLoginTime +
                 ", lastLoginIp='" + lastLoginIp + '\'' +
@@ -149,7 +138,6 @@ public class User implements Serializable {
         if (getAccount() != null ? !getAccount().equals(user.getAccount()) : user.getAccount() != null) return false;
         if (getPassword() != null ? !getPassword().equals(user.getPassword()) : user.getPassword() != null)
             return false;
-        if (getInvid() != null ? !getInvid().equals(user.getInvid()) : user.getInvid() != null) return false;
         if (getLastLoginTime() != null ? !getLastLoginTime().equals(user.getLastLoginTime()) : user.getLastLoginTime() != null)
             return false;
         if (getLastLoginIp() != null ? !getLastLoginIp().equals(user.getLastLoginIp()) : user.getLastLoginIp() != null)
