@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Offer</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="${urls.getForLookupPath('${rc.contextPath}/css/common/admin.css')}">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.4.11/lib/index.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js" defer="defer"></script>
+    <script src="${urls.getForLookupPath('${rc.contextPath}/js/subscribe/offer.js')}" defer="defer"></script>
+</head>
+<body class="sidebar-close">
+<#include  "/common/menu.html" />
+<div class="content">
+    <span class="hide" id="countryOption">${country}</span>
+    <div id="app">
+        <div class="operate-row">
+            <span class="title">Create Offer</span>
+        </div>
+        <div class="form">
+            <el-form :model="offer" :rules="rules" ref='offer'>
+                <el-row class="display-flex">
+                    <div class="form-half-part">
+                        <el-form-item label="Name" prop="offer_name">
+                            <el-input v-model="offer.offer_name" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="Root ID" prop="root_offer_id">
+                            <el-input type="number" v-model="offer.root_offer_id" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="Type" prop="type">
+                            <el-input v-model="offer.type" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="PF Description" prop="pf_description">
+                            <el-input v-model="offer.pf_description" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="Platform" prop="platform">
+                            <el-input v-model="offer.platform" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="PF Category" prop="pf_category">
+                            <el-input v-model="offer.pf_category" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="PF Conversion Flow" prop="pf_conversion_flow">
+                            <el-input v-model="offer.pf_conversion_flow" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="PF Conversion Type" prop="pf_conversion_type">
+                            <el-input v-model="offer.pf_conversion_type" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="PF Payout" prop="pf_payout">
+                            <el-input type="number" v-model="offer.pf_payout" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="PF KPI" prop="pf_kpi">
+                            <el-input v-model="offer.pf_kpi" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="PF Required DeviceID" prop="pf_required_deviceid">
+                            <el-input type="number" v-model="offer.pf_required_deviceid" clearable></el-input>
+                        </el-form-item>
+                    </div>
+                    <div class="form-half-part">
+                        <el-form-item label="Status" prop="status">
+                            <el-switch v-model="offer.status" active-color="#4C56C0" inactive-color="#E6E6E6" inactive-value=0 active-value=1></el-switch>
+                        </el-form-item>
+                        <el-form-item label="Config Status" prop="config_status">
+                            <el-radio-group v-model="offer.config_status">
+                                <el-radio v-for="item of configStatusRadio" :label="item.value" :key="item.value">{{item.label}}</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                        <el-form-item label="Effective Date" prop="effective_date">
+                            <el-date-picker v-model="offer.effective_date" type="datetime" placeholder="please select"></el-date-picker>
+                        </el-form-item>
+                        <el-form-item label="Url" prop="url">
+                            <el-input v-model="offer.url" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="Wifi" prop="is_close_wifi">
+                            <el-switch v-model="offer.is_close_wifi" active-color="#4C56C0" inactive-color="#E6E6E6" inactive-value=1 active-value=0></el-switch>
+                        </el-form-item>
+                        <el-form-item label="Notification" prop="is_notification_enabled">
+                            <el-switch v-model="offer.is_notification_enabled" active-color="#4C56C0" inactive-color="#E6E6E6" inactive-value=0 active-value=1></el-switch>
+                        </el-form-item>
+                        <el-form-item label="Budget" prop="budget">
+                            <el-input type="number" v-model="offer.budget" clearable></el-input>
+                        </el-form-item>
+                        <el-form-item label="Daily Budget" prop="daily_budget">
+                            <el-input type="number" v-model="offer.daily_budget" clearable></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="OS" prop="target_os">
+                            <el-radio-group v-model="offer.target_os">
+                                <el-radio v-for="item of osRadio" :label="item.value" :key="item.value">{{item.label}}</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+
+                        <el-form-item label="Country" prop="target_country_mode">
+                            <el-radio-group v-model="offer.target_country_mode">
+                                <el-radio v-for="item of targetRadio" :label="item.value" :key="item.value">{{item.label}}</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                        <el-form-item label="" prop="target_country" class="form-item-child" v-show="targetValueShow.country" class="tag-outer-select">
+                            <el-select v-model="offer.target_country" placeholder="请选择" multiple="multiple" filterable
+                                       class="tag-outer-select" :style="tagOutSelectStyle.country" popper-class="tag-out-select-dropdown">
+                                <el-option v-for="item of countryOptions" :key="item.code" :label="item.name" :value="item.code">
+                                </el-option>
+                            </el-select>
+                            <span class="multiple-select-count" v-show="countShow.country">{{count.country}}</span>
+                            <el-select v-model="offer.target_country" placeholder="请选择" multiple="multiple" filterable
+                                       @blur="countShow.country=true" @visible-change="countryVisiChange">
+                                <el-option v-for="item of countryOptions" :key="item.code" :label="item.name" :value="item.code">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+
+                        <el-form-item label="Operator" prop="target_operator_mode">
+                            <el-radio-group v-model="offer.target_operator_mode">
+                                <el-radio v-for="item of targetRadio" :label="item.value" :key="item.value">{{item.label}}</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
+                        <el-form-item label="" prop="target_operator" class="form-item-child" v-show="targetValueShow.operator">
+                            <el-input type="textarea" v-model="offer.target_operator" :rows="5" placeholder="请输入内容">
+                            </el-input>
+                        </el-form-item>
+
+                    </div>
+                </el-row>
+            </el-form>
+
+            <el-row class="operate-row text-center">
+                <el-button type="primary" @click="submitForm('offer')">Create</el-button>
+                <el-button @click="resetForm('offer')" class="reset">Reset</el-button>
+            </el-row>
+        </div>
+    </div>
+</div>
+</body>
+</html>
