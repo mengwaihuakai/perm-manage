@@ -17,4 +17,6 @@ public class Offer {
     private Integer daily_budget;
     private Integer target_country_mode;
     private String target_country;
+    private Integer target_os_mode;
+    private String target_os;
 }

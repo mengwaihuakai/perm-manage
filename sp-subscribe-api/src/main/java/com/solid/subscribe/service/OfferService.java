@@ -78,18 +78,19 @@ public class OfferService {
                         .build())
                 .targeting(new HashMap<String, String>() {{
                     put("country", buildValueByMode(offer.getTarget_country_mode(), offer.getTarget_country()));
+                    put("os", buildValueByMode(offer.getTarget_os_mode(), offer.getTarget_os()));
                 }}).build();
     }
 
     private String buildValueByMode(Integer mode, String value) {
         StringBuilder resultValue = new StringBuilder();
-        if (mode.equals(1) && StringUtils.isNotEmpty(value)) {
+        if (Integer.valueOf(1).equals(mode) && StringUtils.isNotEmpty(value)) {
             resultValue.append(StringUtils.join(JSON.parseObject(value, List.class), ","));
-        } else if (mode.equals(2) && StringUtils.isNotEmpty(value)) {
+        } else if (Integer.valueOf(2).equals(mode) && StringUtils.isNotEmpty(value)) {
             resultValue.append("*:1,");
             List<String> valueList = (List<String>) JSON.parseObject(value, List.class).stream().map(e -> e + ":0").collect(Collectors.toList());
             resultValue.append(StringUtils.join(valueList, ","));
-        } else if (mode.equals(0)) {
+        } else if (Integer.valueOf(0).equals(mode)) {
             resultValue.append("*");
         }
         return resultValue.toString();

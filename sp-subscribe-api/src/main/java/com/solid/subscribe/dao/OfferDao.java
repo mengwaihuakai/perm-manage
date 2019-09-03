@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Mapper
 public interface OfferDao {
-    @Select("select `offer_id`, `url`, is_notification_enabled, is_close_wifi, budget, daily_budget, `target_country_mode`, `target_country` " +
+    @Select("select `offer_id`, `url`, is_notification_enabled, is_close_wifi, budget, daily_budget, `target_country_mode`, `target_country`, `target_os_mode`, `target_os` " +
             "from t_offer " +
             "where status=1 and effective_date>NOW()")
     List<Offer> selectAllActiveOffer();//查询状态是激活状态的且在有效期内的
