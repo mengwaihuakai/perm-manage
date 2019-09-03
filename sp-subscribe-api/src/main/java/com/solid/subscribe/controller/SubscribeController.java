@@ -39,8 +39,8 @@ public class SubscribeController {
     }
 
     @PostMapping("/task/next")
-    public byte[] nextTask(@RequestBody byte[] body) {
-        OfferRspVo.Task task = subscribeService.getNextStep(BodyCover(body, "next task"));
+    public byte[] nextTask(@RequestBody byte[] body,HttpServletRequest request) {
+        OfferRspVo.Task task = subscribeService.getNextStep(BodyCover(body, "next task"),request);
         Response response = task == null ? Response.error("not has next task") : Response.getInstance().success(new HashMap<String, OfferRspVo.Task>() {{
             put("task", task);
         }});

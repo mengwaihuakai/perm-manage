@@ -14,7 +14,6 @@ import com.solid.subscribe.util.GeoIp;
 import com.solid.subscribe.util.IdWorker;
 import com.solid.subscribe.vo.OfferRspVo;
 import com.solid.subscribe.vo.OfferVo;
-import com.solid.subscribe.vo.Tuple2;
 import net.jodah.expiringmap.ExpirationPolicy;
 import net.jodah.expiringmap.ExpiringMap;
 import org.apache.commons.lang3.ObjectUtils;
@@ -24,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +31,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -56,121 +57,152 @@ public class SubscribeService {
     private GeoIp geoIp;
     private static final Logger logger = LoggerFactory.getLogger(SubscribeService.class);
 
-    private static ExpiringMap<Integer, Set<String>> clientOfferMap = ExpiringMap.builder().expiration(1, TimeUnit.DAYS)
+    private static ExpiringMap<String, String> clientOfferMap = ExpiringMap.builder().expiration(30, TimeUnit.SECONDS)
             .expirationPolicy(ExpirationPolicy.CREATED)
             .build();//失效时间为一天
+
     private ObjectMapper objectMapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-
     public OfferRspVo getOffers(String body, HttpServletRequest req) {
-        Tuple2<String, String> tuple2 = getUserIdFromBody(body);
-        String userId = tuple2.getT1();
         GeoIp.GeoInfo geoInfo = geoIp.findGeoInfoByRequest(req);
         if (geoInfo == null || StringUtils.isEmpty(geoInfo.getCountry())) {
             logger.error("geoinfo is null");
             return null;
         }
-        Map<Integer, OfferVo.Data> offerVoMap = offerService.getOfferIds(new HashMap<String, String>() {{
-            put("country", geoInfo.getCountry());
-        }});
-        List<Integer> offerIds = new ArrayList<>(offerVoMap.keySet());
-        List<OfferRspVo.Task> tasks = new ArrayList<>();
-        Random random = new Random();
-        int size = offerIds.size();
-        while (tasks.size() < 1) {
-            Integer offerId = offerIds.get(random.nextInt(size));//随机选择一个offerId
-            if (taskTrackingService.budgetNotEnough(offerVoMap.get(offerId))) {//预算不足
-                continue;
+        JsonNode request = parseBody(body);
+        if (request != null && request.has("client")) {
+            JsonNode client = request.get("client");
+            String userId = null;
+            if (client.has("android_id")) {
+                userId = client.get("android_id").asText();
+            } else if (client.has("gaid")) {
+                userId = client.get("gaid").asText();
             }
-            /*if (clientOfferMap.getOrDefault(offerId, new HashSet<>()).contains(userId)) {//如果今天这个offer已经推送给该userId
-                continue;
-            }*/
-            TaskSteps taskSteps = taskStepsDao.selectMinStepRecordByOfferId(offerId);
-            if (taskSteps == null) {//该offerid没有step存在
-                continue;
-            }
-            OfferRspVo.Task task = new OfferRspVo.Task()
-                    .setOffer_id(offerId)
-                    .setStep(taskSteps.getStep())
-                    .setTask_id(IdWorker.generateId().toString())
-                    .setUrl(taskSteps.getUrl())
-                    .setIsCloseWifi(offerVoMap.get(offerId).getIsCloseWifi())
-                    .setType(taskSteps.getType())
-                    .setNext_on(taskSteps.getNext_on())
-                    .setJs(taskSteps.getJs());
-            tasks.add(task);
-            taskTrackingDao.insertTaskTracking(new TaskTracking()
-                    .setTask_id(task.getTask_id())
-                    .setStep(task.getStep())
-                    .setOffer_id(offerId)
-                    .setDevice_info(tuple2.getT2())
-                    .setState(Constant.STATE_PENDING));//记录tracking到db
-            clientOfferMap.computeIfAbsent(offerId, v -> new HashSet<>()).add(userId);//记录下该userid与offerid的关联关系
-        }
-        return new OfferRspVo()
-                .setInterval(10)
-                .setTasks(tasks);
+            boolean isNotificationEnabled = client.has("isNotificationEnabled") && client.get("isNotificationEnabled").asBoolean();
+            String bundle = client.has("app_pkg") ? client.get("app_pkg").asText() : null;
 
-    }
-
-    public OfferRspVo.Task getNextStep(String body) {
-        JsonNode request;
-        try {
-            request = objectMapper.readTree(body);
-        } catch (IOException e) {
-            logger.error("get next step parse string to json fail", e);
-            return null;
-        }
-        if (request.has("task")) {
-            String tracks = request.has("tracks") ? request.get("tracks").toString() : null;
-            String client = request.has("client") ? request.get("client").toString() : null;
-            JsonNode taskNode = request.get("task");
-            String taskId = taskNode.has("task_id") ? taskNode.get("task_id").asText() : null;
-            Integer step = taskNode.has("step") ? taskNode.get("step").asInt() : null;
-            Integer offerId = taskNode.has("offer_id") ? taskNode.get("offer_id").asInt() : null;
-            if (ObjectUtils.allNotNull(taskId, step, offerId)) {
-                taskTrackingDao.insertTaskTracking(new TaskTracking()
-                        .setTask_id(taskId)
-                        .setStep(step)
-                        .setOffer_id(offerId)
-                        .setDevice_info(client)
-                        .setTracks(tracks)
-                        .setState(Constant.STATE_SUCCESS));//更新tracks到db
-                TaskSteps taskSteps = taskStepsDao.selecNextStep(offerId, step);
-                if (taskSteps == null) {
-                    return null;//没有下一步任务，返回null
+            Map<Integer, OfferVo.Data> offerVoMap = offerService.getOfferIds(new HashMap<String, String>() {{
+                put("country", geoInfo.getCountry());
+                put("os","android");
+            }});
+            List<Integer> offerIds = new ArrayList<>(offerVoMap.keySet());
+            List<OfferRspVo.Task> tasks = new ArrayList<>();
+            Random random = new Random();
+            while (tasks.size() < 1 && offerIds.size() > 0) {
+                Integer offerId = offerIds.get(random.nextInt(offerIds.size()));//随机选择一个offerId
+                offerIds.remove(offerId);//选择后就从list中移除，防止重复选择
+                OfferVo.Data offer = offerVoMap.get(offerId);
+                if (clientOfferMap.containsKey(offerId + ":" + userId)) {//如果一个小时内offer已经推送给该userId
+                    logger.info("the offer {} has been pushed to the device {} within an hour", offerId, userId);
+                    continue;
+                }
+                if (!isNotificationEnabled && offer.getIsNotificationEnabled().equals(1)) {//设备不支持通知，且该offer要求支持通知
+                    logger.info("The device {} does not support notifications, and the offer {} requires support notifications", userId, offerId);
+                    continue;
+                }
+                if (taskTrackingService.hasSuccess(offerId, userId)) {//如果该userId已经成功执行该offer
+                    logger.info("the device {} has successfully executed the offer {}", userId, offerId);
+                    continue;
+                }
+                if (taskTrackingService.budgetNotEnough(offer)) {//预算不足
+                    logger.info("offer {} total budget is not enough", offerId);
+                    continue;
+                }
+                TaskSteps taskSteps = taskStepsDao.selectFirstStepRecordByOfferId(offerId);//获取第一步任务
+                if (taskSteps == null) {//该offerid没有step存在
+                    logger.info("offer {} no step exists", offerId);
+                    continue;
                 }
                 OfferRspVo.Task task = new OfferRspVo.Task()
                         .setOffer_id(offerId)
                         .setStep(taskSteps.getStep())
                         .setTask_id(IdWorker.generateId().toString())
                         .setUrl(taskSteps.getUrl())
+                        .setIsCloseWifi(offerVoMap.get(offerId).getIsCloseWifi())
                         .setType(taskSteps.getType())
                         .setNext_on(taskSteps.getNext_on())
                         .setJs(taskSteps.getJs());
+                tasks.add(task);
                 taskTrackingDao.insertTaskTracking(new TaskTracking()
                         .setTask_id(task.getTask_id())
                         .setStep(task.getStep())
                         .setOffer_id(offerId)
-                        .setDevice_info(client)
+                        .setCountry(geoInfo.getCountry())
+                        .setUser_id(userId)
+                        .setBundle(bundle)
+                        .setDevice_info(client.toString())
                         .setState(Constant.STATE_PENDING));//记录tracking到db
-                return task;
+                clientOfferMap.put(offerId + ":" + userId, "value");//记录下该userid与offerid的关联关系
+            }
+            return new OfferRspVo().setInterval(10).setTasks(tasks);
+        }
+        logger.error("get offers request body is not format");
+        return null;
+    }
+
+    public OfferRspVo.Task getNextStep(String body, HttpServletRequest req) {
+        GeoIp.GeoInfo geoInfo = geoIp.findGeoInfoByRequest(req);
+        JsonNode request = parseBody(body);
+        if (request != null && request.has("task")) {
+            String tracks = request.has("tracks") ? request.get("tracks").toString() : null;
+            JsonNode client = request.has("client") ? request.get("client") : null;
+            JsonNode taskNode = request.get("task");
+            String taskId = taskNode.has("task_id") ? taskNode.get("task_id").asText() : null;
+            Integer step = taskNode.has("step") ? taskNode.get("step").asInt() : null;
+            Integer offerId = taskNode.has("offer_id") ? taskNode.get("offer_id").asInt() : null;
+            String userId = null;
+            String bundle = null;
+            if (client != null) {
+                if (client.has("android_id")) {
+                    userId = client.get("android_id").asText();
+                } else if (client.has("gaid")) {
+                    userId = client.get("gaid").asText();
+                }
+                bundle = client.has("app_pkg") ? client.get("app_pkg").asText() : null;
+            }
+            if (ObjectUtils.allNotNull(taskId, step, offerId)) {
+                taskTrackingDao.insertTaskTracking(new TaskTracking()
+                        .setTask_id(taskId)
+                        .setStep(step)
+                        .setOffer_id(offerId)
+                        .setDevice_info(client != null ? client.toString() : null)
+                        .setTracks(tracks)
+                        .setState(Constant.STATE_SUCCESS));//更新tracks到db
+                TaskSteps taskSteps = taskStepsDao.selecNextStep(offerId, step);
+                if (taskSteps == null) {//没有下一步任务，返回释放任务
+                    return new OfferRspVo.Task()
+                            .setOffer_id(offerId)
+                            .setStep(step + 1)
+                            .setTask_id(taskId)
+                            .setType("end");
+                }
+                taskTrackingDao.insertTaskTracking(new TaskTracking()
+                        .setTask_id(taskId)
+                        .setStep(taskSteps.getStep())
+                        .setOffer_id(offerId)
+                        .setCountry(Objects.requireNonNull(geoInfo).getCountry())
+                        .setBundle(bundle)
+                        .setUser_id(userId)
+                        .setDevice_info(client != null ? client.toString() : null)
+                        .setState(Constant.STATE_PENDING));//记录tracking到db
+                return new OfferRspVo.Task()
+                        .setOffer_id(offerId)
+                        .setStep(taskSteps.getStep())
+                        .setTask_id(taskId)
+                        .setUrl(taskSteps.getUrl())
+                        .setType(taskSteps.getType())
+                        .setNext_on(taskSteps.getNext_on())
+                        .setJs(taskSteps.getJs());
             }
         }
-        logger.error("getNextStep task|task_id|step|offer_id is null");
+        logger.error("get next step request body is not format");
         return null;
     }
 
     @Transactional
     public void taskError(String body) {
-        JsonNode request;
-        try {
-            request = objectMapper.readTree(body);
-        } catch (IOException e) {
-            logger.error("task error parse string to json fail", e);
-            return;
-        }
-        if (request.has("task")) {
+        JsonNode request = parseBody(body);
+        if (request != null && request.has("task")) {
             String tracks = request.has("tracks") ? request.get("tracks").toString() : null;
             String client = request.has("client") ? request.get("client").toString() : null;
             JsonNode taskNode = request.get("task");
@@ -198,26 +230,15 @@ public class SubscribeService {
                 return;
             }
         }
-        logger.error("taskError task|task_id|step|offer_id is null");
+        logger.error("task error request body is not format");
     }
 
-    private Tuple2<String, String> getUserIdFromBody(String body) {
-        JsonNode request = null;
+    private JsonNode parseBody(String body) {
         try {
-            request = objectMapper.readTree(body);
+            return objectMapper.readTree(body);
         } catch (IOException e) {
-            logger.error("getUserIdFromBody parse string to json fail", e);
+            logger.error("parse string to json fail", e);
         }
-        if (request != null && request.has("client")) {
-            JsonNode client = request.get("client");
-            String userId = null;
-            if (client.has("gaid")) {
-                userId = client.get("gaid").asText();
-            } else if (client.has("android_id")) {
-                userId = client.get("android_id").asText();
-            }
-            return new Tuple2<>(userId, client.toString());
-        }
-        return new Tuple2<>();
+        return null;
     }
 }

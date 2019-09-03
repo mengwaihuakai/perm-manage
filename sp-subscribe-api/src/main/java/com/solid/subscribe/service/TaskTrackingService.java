@@ -22,14 +22,17 @@ public class TaskTrackingService {
     public Boolean budgetNotEnough(OfferVo.Data offer) {//true代表预算不足
         Integer offerId = offer.getOffer_id();
         Integer unConfirmCount = taskTrackingDao.selectUnConfirmCount(offerId);
-        if (offer.getDailyBudget() - unConfirmCount - taskTrackingDao.selectDailyConfirmCount(offerId) <= 0) {
+        /*if (offer.getDailyBudget() - unConfirmCount - taskTrackingDao.selectDailyConfirmCount(offerId) <= 0) {
             logger.error("offer {} daily budget is not enough", offerId);
             return true;
-        }
+        }*/
         if (offer.getBudget() - unConfirmCount - taskTrackingDao.selectAllConfirmCount(offerId) <= 0) {
-            logger.error("offer {} total budget is not enough", offerId);
             return true;
         }
         return false;
+    }
+
+    public Boolean hasSuccess(Integer offerId,String userId){
+        return taskTrackingDao.selectSuccessByUserId(offerId, userId) > 0;
     }
 }

@@ -43,7 +43,7 @@ public class OfferService {
     public void init() {
         ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1,
                 new BasicThreadFactory.Builder().namingPattern("OfferData-%d").daemon(true).build());
-        executorService.scheduleAtFixedRate(this::applyOfferData, 0, 5, TimeUnit.MINUTES);
+        executorService.scheduleAtFixedRate(this::applyOfferData, 0, 1, TimeUnit.MINUTES);
     }
 
     public final List<OfferVo.Data> findOffers(Map<String, String> trafficProperties) {
@@ -71,24 +71,26 @@ public class OfferService {
                 .offer(OfferVo.Data.builder()
                         .offer_id(offer.getOffer_id())
                         .url(offer.getUrl())
+                        .isNotificationEnabled(offer.getIs_notification_enabled())
                         .isCloseWifi(offer.getIs_close_wifi())
                         .budget(offer.getBudget())
                         .dailyBudget(offer.getDaily_budget())
                         .build())
                 .targeting(new HashMap<String, String>() {{
                     put("country", buildValueByMode(offer.getTarget_country_mode(), offer.getTarget_country()));
+                    put("os", buildValueByMode(offer.getTarget_os_mode(), offer.getTarget_os()));
                 }}).build();
     }
 
     private String buildValueByMode(Integer mode, String value) {
         StringBuilder resultValue = new StringBuilder();
-        if (mode.equals(1) && StringUtils.isNotEmpty(value)) {
+        if (Integer.valueOf(1).equals(mode) && StringUtils.isNotEmpty(value)) {
             resultValue.append(StringUtils.join(JSON.parseObject(value, List.class), ","));
-        } else if (mode.equals(2) && StringUtils.isNotEmpty(value)) {
+        } else if (Integer.valueOf(2).equals(mode) && StringUtils.isNotEmpty(value)) {
             resultValue.append("*:1,");
             List<String> valueList = (List<String>) JSON.parseObject(value, List.class).stream().map(e -> e + ":0").collect(Collectors.toList());
             resultValue.append(StringUtils.join(valueList, ","));
-        } else if (mode.equals(0)) {
+        } else if (Integer.valueOf(0).equals(mode)) {
             resultValue.append("*");
         }
         return resultValue.toString();
@@ -96,7 +98,7 @@ public class OfferService {
 
     private void applyOfferData() {
         try {
-            List<OfferVo> offerVoList = offerDao.selectAllOffer().stream().map(this::convOfferToOfferVo).collect(Collectors.toList());
+            List<OfferVo> offerVoList = offerDao.selectAllActiveOffer().stream().map(this::convOfferToOfferVo).collect(Collectors.toList());
             EngineBuilder engineBuilder = EngineBuilder.newBuilder();
             engineBuilder.addTag("country", false, false);
             Map<Integer, OfferVo.Data> offerMap = new HashMap<>();
