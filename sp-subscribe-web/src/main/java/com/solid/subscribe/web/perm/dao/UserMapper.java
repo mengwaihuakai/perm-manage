@@ -16,8 +16,8 @@ public interface UserMapper {
     User getUserById(Integer id);
     /*根据account查询用户*/
     User getUserByAccount(String account);
-    /*查询用户*/
-    List<User> getUsers(User userParam);
+    /*查询所有用户*/
+    List<User> getUsers();
     /*更新user*/
     Integer updateUser(User user);
     /*创建用户*/

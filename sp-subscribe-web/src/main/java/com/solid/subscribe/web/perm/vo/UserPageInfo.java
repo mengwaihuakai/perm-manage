@@ -10,8 +10,6 @@ public class UserPageInfo {
     private int id;
     /*账户*/
     private String account;
-    /*invid*/
-    private String invid;
     /*密码*/
     private String password;
     /*状态*/
@@ -49,14 +47,6 @@ public class UserPageInfo {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getInvid() {
-        return invid;
-    }
-
-    public void setInvid(String invid) {
-        this.invid = invid;
     }
 
     public int getStatus() {

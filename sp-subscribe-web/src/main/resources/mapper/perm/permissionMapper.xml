@@ -34,4 +34,18 @@
         and status=0
     </select>
 
+    <select  id="getValidPermissions" resultMap="permission" >
+        select
+        id,
+        name,
+        code,
+        status,
+        menu_code,
+        create_time
+        update_time
+        from perm_permission
+        where status=0
+        order by name
+    </select>
+
 </mapper>

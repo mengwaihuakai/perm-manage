@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -178,9 +179,10 @@ public class RoleController {
     @RequiresPermissions(ShiroConstants.PERM_ROLE)
     @RequestMapping(value="deleteRole",method = RequestMethod.POST)
     @ResponseBody
-    public ResultHandler deleteRole(Integer id, HttpServletRequest request){
+    public ResultHandler deleteRole(@RequestBody Role role, HttpServletRequest request){
         ResultHandler resultHandler=new ResultHandler();
         resultHandler.setCode(Constants.Result.RESULTCODE_FAILURE);
+        Integer id = role.getId();
         try {
             if(null!=id){
                 roleService.deleteRole(id,request);

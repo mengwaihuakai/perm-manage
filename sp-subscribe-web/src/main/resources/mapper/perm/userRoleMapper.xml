@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mapper.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solid.subscribe.web.perm.dao.UserRoleMapper">
+<resultMap type="com.solid.subscribe.web.perm.entity.UserRole" id="userRole">
+    <result property="userId" column="user_id" />
+    <result property="roleId" column="role_id" />
+    <result property="createTime" column="create_time" />
+</resultMap>
+
+
+    <!--查询所有有效数据-->
+    <select  id="getUserRoles" resultMap="userRole">
+        select
+        user_id,
+        role_id,
+        create_time
+        from perm_user_role
+    </select>
+
+    <!--根据userId查询所有roleId-->
+    <select id="getRoleIdByUserId" parameterType="Integer" resultType="Integer">
+        select
+        role_id
+        from perm_user_role
+        where user_id=#{userId}
+    </select>
+
+    <!--根据roleId查询所有userId-->
+    <select id="getUserIdByRoleId" parameterType="Integer" resultType="Integer">
+        select
+        user_id
+        from perm_user_role
+        where role_id=#{roleId}
+    </select>
+
+    <!--批量保存-->
+    <insert id="saveUserRoleList" parameterType="java.util.List" useGeneratedKeys="true">
+        insert into perm_user_role
+        (
+        user_id,
+        role_id
+        )
+        values
+        <foreach collection ="list" item="userRole" index= "index" separator =",">
+        (
+        #{userRole.userId},
+        #{userRole.roleId}
+        )
+        </foreach >
+    </insert>
+
+
+    <delete id="deleteByUserId" parameterType="Integer">
+        delete
+        from perm_user_role
+        where user_id=#{userId}
+    </delete>
+
+
+    <delete id="deleteByRoleId" parameterType="Integer">
+        delete
+        from perm_user_role
+        where role_id=#{roleId}
+    </delete>
+
+
+    <!--根据roleId删除-->
+    <delete id="deleteByRoleIdList" parameterType="java.util.Map">
+        delete
+        from perm_user_role
+        where user_id=#{userId}
+        and role_id in
+        <foreach item="item" index="index" open="(" separator="," close=")" collection="deleteList">
+            #{item}
+        </foreach>
+    </delete>
+
+</mapper>

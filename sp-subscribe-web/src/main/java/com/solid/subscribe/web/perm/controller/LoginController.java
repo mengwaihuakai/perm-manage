@@ -53,17 +53,10 @@ public class LoginController {
                 UsernamePasswordToken token = new UsernamePasswordToken(account, password);
                 Subject subject = SecurityUtils.getSubject();
                 subject.login(token);
-                User user=(User)subject.getPrincipal();
-                Set<Role> roleList = roleService.getRolesByUserId(user.getId());
-                for (Role role : roleList) {
-                    if (! StringUtils.equals(role.getCode(), Constants.Role.INTERNAL_USER)) {
-                        resultHandler.setMessage("The system is only open to internal users.");
-                        return resultHandler;
-                    }
-                }
+                User user = (User)subject.getPrincipal();
                 logger.info("对用户[" + account + "]进行登录验证..验证通过,user为："+user);
                 //保存登陆信息
-                if(null!=user){
+                if(null != user){
                     session.setAttribute("userAccount",account);//将账号存到seesion中
                     userService.saveLoginIpAndTime(request,user,resultHandler);
                 }else{

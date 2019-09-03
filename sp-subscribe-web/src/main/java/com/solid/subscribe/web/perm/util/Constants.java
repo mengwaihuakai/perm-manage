@@ -16,8 +16,4 @@ public class Constants {
         public static final int LOCKED = 2;//冻结
     }
 
-    public class Role {
-        public static final String INTERNAL_USER = "internal_user";//外部用户
-    }
-
 }

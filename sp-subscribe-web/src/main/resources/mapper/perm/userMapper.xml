@@ -56,4 +56,40 @@
     </update>
 
 
+    <!--查询所有-->
+    <select  id="getUsers" resultMap="user">
+        select
+        id,
+        account,
+        password,
+        status,
+        last_login_time,
+        last_login_ip,
+        create_time,
+        update_time
+        from perm_user
+    </select>
+
+    <insert id="saveUser" parameterType="com.solid.subscribe.web.perm.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into perm_user
+        (
+        account,
+        password,
+        status
+        )
+        values
+        (
+        #{account},
+        #{password},
+        #{status}
+        )
+    </insert>
+
+    <!--删除用户数据-->
+    <delete id="deleteById" parameterType="Integer">
+        delete
+        from perm_user
+        where id=#{id}
+    </delete>
+
 </mapper>

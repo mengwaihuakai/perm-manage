@@ -12,4 +12,5 @@ public class ShiroConstants {
     public static final String LOG_SUMMARY = "log_summary";//日志汇总
 
     //subscribe
+    public static final String OFFER = "offer";
 }

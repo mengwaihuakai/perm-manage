@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Role Manage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="${urls.getForLookupPath('${rc.contextPath}/css/common/admin.css')}">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.4.11/lib/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+    <style>
+        .filter-row .el-input{
+            width: 240px;
+        }
+    </style>
+</head>
+<body class="sidebar-close">
+<#include  "/common/menu.html" />
+<div class="content">
+    <div id="app">
+        <div class="operate-row filter-row">
+            <el-input type="text" clearable placeholder="Search Name" v-model="nameFilter"  class="filter-item"></el-input>
+            <el-button type="primary" class="operate-item" icon="el-icon-plus" onclick="window.location.href='${rc.contextPath}/perm/role/toAddRole'">Create</el-button>
+            <el-button @click="filterReport" type="primary" icon="el-icon-search" class="operate-item search">Search</el-button>
+        </div>
+        <div class="table-row">
+            <el-table :data="displayData" ref="reportTable" v-loading="loading"
+                      @filter-change="handleTableFilterChange" @sort-change="handleTableSortChange">
+                <el-table-column key="name" prop="name" label="Name" align="center" sortable></el-table-column>
+                <el-table-column key="status" prop="status" label="Status" align="center" sortable="custom"></el-table-column>
+                <el-table-column key="permissionList" prop="permissionList" label="Permission List" min-width="300" sortable></el-table-column>
+                <el-table-column key="createTime" prop="createTime" label="Create Time" align="center" sortable>
+                    <template slot-scope="scope">
+                        {{scope.row.createTime.substr(0,13).replace('T', ' ')}}
+                    </template>
+                </el-table-column>
+                <el-table-column key="updateTime" prop="updateTime" label="Update Time" align="center" sortable>
+                    <template slot-scope="scope">
+                        {{scope.row.updateTime.substr(0,13).replace('T', ' ')}}
+                    </template>
+                </el-table-column>
+                <el-table-column key="actions" label="Actions" align="center" sortable="custom">
+                    <template slot-scope="scope">
+                        <a title="Edit">
+                            <i class="el-icon-edit" @click = 'edit(scope.row.id)' ></i>
+                        </a>
+                        <a title="Edit">
+                            <i class="el-icon-delete" @click = 'toDel(scope.row.id, scope.row.name)' ></i>
+                        </a>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <el-row >
+                <el-col :span="8" :offset="0">
+                    <el-pagination background :layout="tablePagination.layout" :total="reportData.length" :page-size.sync="tablePagination.pageSize"
+                                   :current-page.sync="tablePagination.currentPage" :page-sizes="tablePagination.pageSizes"></el-pagination>
+                </el-col>
+            </el-row>
+        </div>
+        <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
+            <span>{{dialogMessage}}</span>
+            <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible = false">Cancel</el-button>
+                    <el-button type="primary" @click="del">Confirm</el-button>
+                </span>
+        </el-dialog>
+    </div>
+    <div style="width: 100%; height: 50px;"></div>
+</div>
+<script>
+    //1、左侧菜单栏对应选中
+    document.querySelector("#permRole").classList.add("active");
+    //2、面包屑
+    document.querySelector("#breadcrumbModule").textContent = "Role Manage";
+    document.querySelector("#breadcrumbPage").classList.add("hide");
+
+    const api = axios.create({
+        baseURL: '/perm/role',
+        timeout: 180000
+    });
+    api.defaults.headers.post['Content-Type'] = 'application/json';
+    var app = new Vue({
+        el: "#app",
+        data: {
+            dialogVisible: false,
+            dialogMessage: "",
+            dialogId: null,
+            loading: false,
+            reportData: [],
+            reportCopyData: [],
+            nameFilter: "",
+            tableColumnFilters: {},
+            tableSorting: {
+                prop: null,
+                order: null // null, ascending, descending
+            },
+            tablePagination: {
+                currentPage: 1,
+                pageSize: 50,
+                pageSizes: [50, 100, 200],
+                layout: 'sizes, prev, pager, next, total'
+            },
+        },
+        computed: {
+            filteredRows: function () {
+                var data = this.reportData;
+                for (var col in this.tableColumnFilters) {
+                    var vals = this.tableColumnFilters[col];
+                    if (vals.length !== 0) {
+                        data = data.filter(x => vals.includes(x[col]))
+                    }
+                }
+                return data;
+            },
+            displayData: function () {
+                const pageNum = this.tablePagination.currentPage;
+                const pageSize = this.tablePagination.pageSize;
+                const sortKey = this.tableSorting.prop;
+                const sortOrder = this.tableSorting.order;
+                return _.slice(this.sortedRows(this.filteredRows, sortKey, sortOrder), (pageNum - 1) *
+                    pageSize, pageNum * pageSize);
+            }
+        },
+        methods: {
+            edit (id) {
+                let f = document.createElement('form');
+                f.style.display='none';
+                f.action='toEditRole';
+                f.method='post';
+                f.innerHTML='<input type="hidden" name="id" value='+id+'>';
+                document.body.appendChild(f);
+                f.submit();
+            },
+            toDel (id, name){
+                this.dialogMessage = "确定要删除名称:" + name + " 的角色吗？";
+                this.dialogVisible = true;
+                this.dialogId = id;
+            },
+            del (){
+                let vm = this;
+                vm.loading = true;
+                vm.dialogVisible = false;
+                api.post('deleteRole', {id: vm.dialogId})
+                    .then(function (r) {
+                        vm.loading = false;
+                        vm.$alert(r.data.message, '提示', {
+                            callback: action => {
+                            }
+                        });
+                        vm.reportData = vm.reportCopyData.filter(item => {
+                            return item.id !== vm.dialogId;
+                        });
+                        vm.reportCopyData = vm.reportData;
+                    })
+                    .catch(function (e) {
+                        vm.loading = false;
+                        vm.$alert('' + e, '提示', {
+                            callback: action => {
+                            }
+                        });
+                    });
+            },
+            generateData (result) {
+                for (let item of result){
+                    let permListStr = "";
+                    //status
+                    switch (item.status){
+                        case 0:
+                            item.status =  "正常";
+                            break;
+                        case 1:
+                            item.status =  "无效";
+                            break;
+                        case 2:
+                            item.status =  "冻结";
+                            break;
+                    }
+                    //roleList
+                    item.permissionList.forEach(item => {
+                        permListStr += item.name + ", "
+                    });
+                    item.permissionList =permListStr.lastIndexOf(", ") === permListStr.length - 2 ? permListStr.substring(0, permListStr.lastIndexOf(", ")) : permListStr;
+                }
+                return result;
+            },
+            refreshReportData(){
+                let vm = this;
+                vm.loading = true;
+                api.post('search', {})
+                    .then(function (r) {
+                        vm.loading = false;
+                        if (r.status && r.status === 200) {
+                            vm.reportData = vm.generateData(r.data.result);
+                            vm.reportCopyData = vm.reportData;
+                            vm.$notify.success({
+                                message: '数据加载成功',
+                                duration: 1500
+                            });
+                        } else {
+                            vm.$alert(r.status || 'Unknown', '数据加载失败', {
+                                callback: action => {}
+                            });
+                        }
+                    })
+                    .catch(function (e) {
+                        vm.loading = false;
+                        vm.$alert('' + e, '数据加载异常', {
+                            callback: action => {}
+                        });
+                    });
+            },
+            filterReport () {
+                let nameFilter = this.nameFilter;
+                if (nameFilter) {
+                    this.reportData = this.reportCopyData.filter(item => {
+                        return item.name === nameFilter;
+                    })
+                } else {
+                    this.reportData = this.reportCopyData
+                }
+            },
+            handleTableFilterChange (filters) {
+                this.tableColumnFilters = _.cloneDeep(filters);
+            },
+            handleTableSortChange (sorting) {
+                this.tableSorting.prop = sorting.prop;
+                this.tableSorting.order = sorting.order;
+            },
+            sortedRows: function (rows, prop, order) {
+                if (prop === null || order === null) {
+                    return rows;
+                }
+                if (order === 'ascending') {
+                    return _.sortBy(rows, [prop])
+                } else {
+                    return _.reverse(_.sortBy(rows, [prop]));
+                }
+            }
+        },
+        mounted: function () {
+            this.refreshReportData();
+        }
+    })
+</script>
+</body>
+</html>

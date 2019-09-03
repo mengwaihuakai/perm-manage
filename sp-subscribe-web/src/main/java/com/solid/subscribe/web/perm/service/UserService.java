@@ -156,7 +156,6 @@ public class UserService {
                     userCb.compare("id", "id");
                     userCb.compare("account", "账号");
                     userCb.compare("password", "密码");
-                    userCb.compare("invid", "invid");
                     userCb.compare("status", "状态");
                     if (StringUtils.isNotBlank(content)) {
                         content.append(";");
@@ -308,7 +307,6 @@ public class UserService {
             userCb.compare("id", "id");
             userCb.compare("account", "账号");
             userCb.compare("password", "密码");
-            userCb.compare("invid", "invid");
             userCb.compare("status", "状态");
             if (StringUtils.isNotBlank(userUpdateContent)) {
                 userUpdateContent.append(";");
@@ -333,11 +331,37 @@ public class UserService {
         return resultHandler;
     }
 
+    public UserPageInfo getUserById(Integer id) throws Exception {
+        List<Role> roleValidList = roleMapper.getValidRoles();
+        List<UserRole> userRoleValidList = userRoleMapper.getUserRoles();
+        User user = userMapper.getUserById(id);
+        UserPageInfo userPageInfo = new UserPageInfo();
+        List<Role> roleList = new LinkedList<>();
+        userPageInfo.setId(user.getId());
+        userPageInfo.setAccount(user.getAccount());
+        userPageInfo.setPassword(user.getPassword());
+        userPageInfo.setStatus(user.getStatus());
+        userPageInfo.setLastLoginIp(user.getLastLoginIp());
+        userPageInfo.setLastLoginTime(user.getLastLoginTime());
+        userPageInfo.setCreateTime(user.getCreateTime());
+        userPageInfo.setUpdateTime(user.getUpdateTime());
+        for (UserRole userRole : userRoleValidList) {//用户表id 与 用户角色表的userId对应；用户角色表的roleId 与 角色表的id对应
+            if (user.getId() == userRole.getUserId()) {
+                for (Role role : roleValidList) {
+                    if (userRole.getRoleId() == role.getId()) {
+                        roleList.add(role);
+                    }
+                }
+            }
+        }
+        userPageInfo.setRoleList(roleList);
+        return userPageInfo;
+    }
 
-    public List<UserPageInfo> getUserPageInfo(User userParam, HttpServletRequest request) throws Exception {
+    public List<UserPageInfo> getUserPageInfo() throws Exception {
         List<UserPageInfo> userPageInfoList = new LinkedList<>();
         //组装页面用户数据
-        List<User> userList = userMapper.getUsers(userParam);
+        List<User> userList = userMapper.getUsers();
         List<Role> roleValidList = roleMapper.getValidRoles();
         List<UserRole> userRoleValidList = userRoleMapper.getUserRoles();
         for (User user : userList) {

@@ -7,6 +7,7 @@ url('../../fonts/LucidaGrande.ttf') format('trueType');
 url('../../fonts/LucidaGrande.woff') format('woff');
 url('../../fonts/LucidaGrande.svg#fontawesomeregular') format('svg');
 }
+
 @font-face {
     font-family:'LucidaGrandeBold';
     src: url('../../fonts/LucidaGrandeBold.eot');
@@ -15,19 +16,23 @@ url('../../fonts/LucidaGrandeBold.ttf') format('trueType');
 url('../../fonts/LucidaGrandeBold.woff') format('woff');
 url('../../fonts/LucidaGrandeBold.svg#fontawesomeregular') format('svg');
 }
+
 * {
     letter-spacing: 0;
     padding: 0;
     margin: 0;
 }
+
 a {
     text-decoration: none;
     outline: none;
     color: #353536;
 }
+
 li{
     list-style: none;
 }
+
 body{
     font-size: 16px;
     font-family: LucidaGrande;
@@ -35,13 +40,16 @@ body{
     background-color: #FFF;
     overflow: hidden;
 }
+
 body.sidebar-close .main-sidebar{
     width: 0;
 }
+
 body.sidebar-close .content{
     margin-left: 0;
     width: 97vw;
 }
+
 .main-sidebar{
     width: 14.32vw;
     height: 100vh;
@@ -52,6 +60,7 @@ body.sidebar-close .content{
     overflow: auto;
     transition: all 0.5s ease-in-out;
 }
+
 .content{
     margin-left: 14.32vw;
     width: 82.18vw;
@@ -61,17 +70,20 @@ body.sidebar-close .content{
     overflow-y: scroll;
     transition: all 0.5s ease-in-out;
 }
+
 .main-header{
     width: 100vw;
     height: 70px;
     font-size: 14px;
     box-shadow: 6px 2px 15px 0 rgba(105,105,105,0.11);
 }
+
 .main-header .logo,
 .main-header .user-info,
 .main-header .login-info{
     line-height: 70px;
 }
+
 .main-header .logo{
     display: inline-block;
     padding: 0 1vw;
@@ -175,6 +187,7 @@ body.sidebar-close .content{
 .filter-row .el-popover .el-select:not(.el-select--mini) .el-icon-arrow-up:before{
     top: -8px;
 }
+
 .filter-row .el-select:not(.el-select--mini) .el-input__suffix{
     box-sizing: border-box;
     margin: 8px 0;
@@ -182,18 +195,22 @@ body.sidebar-close .content{
     height: 34px;
     border-left: 1px solid rgba(159,167,181,0.413);
 }
+
 .filter-row .el-select:not(.el-select--mini) .el-input .el-select__caret{
     color: #9FA7B5;
 }
+
 .filter-row .el-select:not(.el-select--mini) .el-select-dropdown__item{
     height: 50px;
     line-height: 50px;
     font-size: 16px;
 }
+
 .filter-row .el-select:not(.el-select--mini) .el-icon-arrow-up:before {
     position: relative;
     top: -3px;
 }
+
 .filter-row .el-date-editor--datetimerange.el-input__inner{
     width: 390px;
 }
@@ -264,19 +281,23 @@ body.sidebar-close .content{
 .filter-row .el-range-editor .el-range-input:first-child{
     margin-left: 4px;
 }
+
 .filter-row .el-date-editor.check-error .el-icon-date:before{
     content: url("../../images/common/calendar_icon_disable.svg");
 }
+
 .filter-row .el-date-editor .el-icon-date:before,
 .filter-row .el-date-editor .el-range__icon:before{
     content: url("../../images/common/calendar_icon_default.svg");
     width: 25px;
     height: 26px;
 }
+
 .filter-row .el-range-editor .el-range__icon:before{
     top: 8px;
     position: relative;
 }
+
 .filter-row .el-button:not(.popover-btn):not(.is-circle){
     position: relative;
     border-radius: 24px;
@@ -286,10 +307,12 @@ body.sidebar-close .content{
     box-sizing: border-box;
     border: none;
 }
+
 .filter-row .el-button.is-circle{
     font-size: 16px;
     margin-left: 16px;
 }
+
 .filter-row .el-button.reset:not(.popover-btn):not(.is-circle){
     width: 113px;
     border: 2px solid #4C56C0;
@@ -298,19 +321,23 @@ body.sidebar-close .content{
     margin-left: 4px;
     margin-right: 0;
 }
+
 .filter-row .el-button.search{
     width: 172px;
     margin-left: 29px;
 }
+
 .filter-row .el-button.search:active,
 .operate-row .el-button:active{
     background: #262F88;
 }
+
 .filter-row .el-button.reset:active{
     background: #4C56C0;
     color: #FFF;
     border: none;
 }
+
 .filter-row .el-tag {
     margin-left: 5px;
 }
@@ -418,21 +445,56 @@ body.sidebar-close .content{
     width: 70px;
     margin-right: 30px;
 }
+
 .chart-row .tooltip-html span.checked{
     color: #4C56C0
 }
+
 .chart-row .el-input{
     width: 245px;
     margin: 20px 35px 5px 0;
 }
+
 .chart-row .el-input__inner{
     box-shadow: 0 2px 12px 0 rgba(105,105,105,0.11);
     border-radius: 25px;
     padding: 16px 30px;
 }
+
 .table-row{
     padding: 24px;
 }
+
+.table-row .el-dialog{
+    border-radius: 6px;
+    margin-top: 8vh!important;
+    width: 92vw;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.table-row .el-dialog .el-dialog__header {
+    box-sizing: border-box;
+    height: 62px;
+    background-color: #4C56C0;
+    line-height: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table-row .el-dialog .el-dialog__header .el-dialog__title{
+    color: #FFF;
+    font-size: 22px;
+}
+
+.table-row .el-dialog .el-dialog__header .el-dialog__headerbtn .el-dialog__close {
+    color: #FFF;
+}
+
+.table-row .el-dialog .el-dialog__body {
+    padding: 40px 80px;
+}
+
 .table-row .el-select:not(.el-select--mini){
     margin-bottom: 15px;
     border: none;
@@ -479,31 +541,7 @@ body.sidebar-close .content{
 .cell-click:active .cell-click-a{
     color: #7D88FB;
 }
-.table-row .el-dialog{
-    border-radius: 6px;
-    margin-top: 8vh!important;
-    width: 92vw;
-    max-height: 85vh;
-    overflow-y: auto;
-}
-.table-row .el-dialog .el-dialog__header {
-    box-sizing: border-box;
-    height: 62px;
-    background-color: #4C56C0;
-    line-height: 20px;
-    text-align: center;
-    font-weight: bold;
-}
-.table-row .el-dialog .el-dialog__header .el-dialog__title{
-    color: #FFF;
-    font-size: 22px;
-}
-.table-row .el-dialog .el-dialog__header .el-dialog__headerbtn .el-dialog__close {
-    color: #FFF;
-}
-.table-row .el-dialog .el-dialog__body {
-    padding: 40px 80px;
-}
+
 .table-row .el-table tr{
     height: 69px;
 }
@@ -686,16 +724,20 @@ body.sidebar-close .content{
 .form .el-select.tag-outer-select .el-select__tags{
     max-width: 100%!important;
 }
+
 .form .el-select.tag-outer-select .el-tag{
     margin: 0 14px 8px 0;
 }
+
 .form .el-select.tag-outer-select .el-input--suffix{
     visibility: hidden;
 }
+
 .tag-out-select-dropdown,
 .form .el-select.tag-outer-select .el-select__input{
     display: none;
 }
+
 .form .multiple-select-count{
     position: absolute;
     z-index: 10;
@@ -704,9 +746,11 @@ body.sidebar-close .content{
     width: 90px;
     background-color: #F6F8FB;
 }
+
 .form .multiple-select-count+.el-select .el-tag{
     display: none;
 }
+
 .form .el-tag.el-tag--info .el-tag__close {
     right: -4px;
     background: transparent;
@@ -714,6 +758,7 @@ body.sidebar-close .content{
     font-size: 16px;
     font-weight: bold;
 }
+
 .form .el-tag.el-tag--info {
     box-sizing: border-box;
     border-color: #CBD1DC;
@@ -724,6 +769,7 @@ body.sidebar-close .content{
     height: 36px;
     padding: 0 12px;
 }
+
 .form .operate-row .el-button{
     width: 172px;
     height: 47px;
@@ -733,60 +779,31 @@ body.sidebar-close .content{
     box-sizing: border-box;
     font-weight: bold;
 }
+
 .form .operate-row .el-button.el-button--default{
     background: rgba(255,255,255,1);
     border-radius: 24px;
     border: 2px solid rgba(76,86,192,1);
     color: #4C56C0;
 }
+
 .form .operate-row .el-button.is-plain{
     background: #F0F0FA;
     border: 2px solid rgba(76,86,192,0.2962);
     color: #4C56C0;
 }
+
 .form .operate-row .el-button:not(:first-child){
     margin-left: 28px;
 }
+
 .form .operate-row .el-button.el-button--default:active,
 .form .operate-row .el-button.is-plain:active{
     background: #4C56C0;
     color: #FFF;
     border: none;
 }
-.form .el-dialog .el-dialog__header{
-    font-weight: bold;
-}
-.form .el-dialog .el-form-item__label{
-    float: left;
-    line-height: 70px;
-    font-weight: bold;
-}
-.form .el-dialog .el-dialog__body,
-.el-message-box .el-message-box__content{
-    padding: 30px 20px;
-    word-break: break-word;
-    font-size: 16px;
-}
-.form .el-dialog .el-dialog__footer{
-    text-align: center;
-}
-.form .el-dialog .dialog-footer .el-button,
-.el-message-box .el-button{
-    width: 120px;
-    margin-top: 0;
-    margin-bottom: 12px;
-    height: 42px;
-    float: none;
-    box-sizing: border-box;
-    font-weight: bold;
-    border-radius: 24px;
-    font-family: LucidaGrandeBold;
-    font-size: 16px;
-}
-.form .el-dialog .el-button:not(:first-child) {
-    margin-left: 20px;
-    margin-right: 28px;
-}
+
 .form .el-form-item .el-button{
     box-sizing: border-box;
     /*width: 93px;*/
@@ -800,6 +817,7 @@ body.sidebar-close .content{
     font-weight: bold;
     line-height: 10px;
 }
+
 .el-button.el-button--primary{
     background-color: #4C56C0;
     color: #FFF;
@@ -809,6 +827,7 @@ body.sidebar-close .content{
     background-color: #909399;
     border: 2px solid #909399;
 }
+
 .el-button:not(.popover-btn):hover,
 .el-button:not(.popover-btn):hover,
 .el-button:not(.popover-btn):active,
@@ -817,12 +836,14 @@ body.sidebar-close .content{
     color: #FFF!important;
     border: 2px solid #7D88FB!important;
 }
+
 .el-button.is-circle:hover,
 .el-button.is-circle:hover,
 .el-button.is-circle:active,
 .el-button.is-circle:active{
     border: 1px solid #7D88FB!important;
 }
+
 .el-radio .el-radio__label,
 .el-radio.is-checked .el-radio__label,
 .el-radio .el-checkbox__label,
@@ -832,39 +853,84 @@ body.sidebar-close .content{
     color: #353536;
     font-size: 16px;
 }
+
 .el-radio:hover,
 .el-checkbox:hover,
 .el-radio:active,
 .el-checkbox:active{
     opacity: 0.6;
 }
+
 .el-radio__input .el-radio__inner,
 .el-checkbox__inner{
     width: 19px;
     height: 19px;
 }
+
 .el-radio__inner::after {
     width: 11px;
     height: 11px;
     background-color: #4C56C0;
 }
+
 .el-radio__input.is-checked .el-radio__inner{
     border: 2px solid #4C56C0;
     background: none;
 }
+
 .el-checkbox {
     width: 166px;
 }
+
 .el-checkbox__input.is-checked .el-checkbox__inner,
 .el-checkbox__input.is-indeterminate .el-checkbox__inner {
     background-color: #4C56C0;
     border-color: #2F367E;
 }
+
 .el-checkbox .el-checkbox__inner::after {
     left: 6px;
     top: 2px;
     border-right-width: 2px;
     border-bottom-width: 2px;
+}
+
+.el-dialog .el-dialog__header,
+.el-message-box .el-message-box__header{
+    font-weight: bold;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.el-dialog .el-dialog__body,
+.el-message-box .el-message-box__content{
+    padding: 20px;
+    font-size: 16px;
+    word-break: break-word;
+}
+
+.el-dialog .el-form-item__label{
+    float: left;
+    line-height: 70px;
+    font-weight: bold;
+}
+
+.el-dialog .dialog-footer .el-button,
+.el-message-box .el-button{
+    width: 120px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    height: 42px;
+    float: none;
+    box-sizing: border-box;
+    font-weight: bold;
+    border-radius: 24px;
+    font-family: LucidaGrandeBold;
+    font-size: 16px;
+}
+
+.el-dialog .el-button:not(:first-child) {
+    margin-left: 20px;
 }
 
 /*快捷样式*/
@@ -882,27 +948,4 @@ body.sidebar-close .content{
 }
 .text-left{
     text-align: left;
-}
-
-/*bidder + inventory页面*/
-.form .form-item-row{
-    margin: 8px 0;
-}
-
-.form .form-item-row .el-input.el-input-group--append{
-    width: 210px;
-}
-
-.form .form-item-row .el-button{
-    padding: 12px 13px;
-}
-
-.form .form-item-row .el-button span{
-    font-size: 22px;
-}
-
-.form .form-item-row .el-input-group-connect{
-    padding: 0 10px;
-    font-size: 20px;
-    font-weight: 600;
 }

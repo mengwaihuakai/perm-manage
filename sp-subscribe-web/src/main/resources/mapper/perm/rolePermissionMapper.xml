@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mapper.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solid.subscribe.web.perm.dao.RolePermissionMapper">
+<resultMap type="com.solid.subscribe.web.perm.entity.RolePermission" id="rolePerm">
+    <result property="roleId" column="role_id" />
+    <result property="permissionId" column="permission_id" />
+    <result property="createTime" column="create_time" />
+</resultMap>
+
+    <!--批量保存-->
+    <insert id="saveRolePermList" parameterType="java.util.List" useGeneratedKeys="true">
+        insert into perm_role_permission
+        (
+        role_id,
+        permission_id
+        )
+        values
+        <foreach collection ="list" item="rolePerm" index= "index" separator =",">
+            (
+            #{rolePerm.roleId},
+            #{rolePerm.permissionId}
+            )
+        </foreach >
+    </insert>
+
+    <!--删除数据-->
+    <delete id="deleteByRoleId" parameterType="Integer">
+        delete
+        from perm_role_permission
+        where role_id=#{roleId}
+    </delete>
+
+
+    <!--查询所有有效数据-->
+    <select  id="getRolePerms" resultMap="rolePerm">
+        select
+        role_id,
+        permission_id,
+        create_time
+        from perm_role_permission
+    </select>
+
+    <!--根据roleId查询所有permissionId-->
+    <select id="getPermIdByRoleId" parameterType="Integer" resultType="Integer">
+        select
+        permission_id
+        from perm_role_permission
+        where role_id=#{roleId}
+    </select>
+
+    <!--根据roleId删除-->
+    <delete id="deleteByPermIdList" parameterType="java.util.Map">
+        delete
+        from perm_role_permission
+        where role_id=#{roleId}
+        and permission_id in
+        <foreach item="item" index="index" open="(" separator="," close=")" collection="deleteList">
+            #{item}
+        </foreach>
+    </delete>
+
+</mapper>

@@ -30,7 +30,7 @@
             <li class="treeview" id="perm">
                 <p>
                     <img class="menu-icon" src="${rc.contextPath}/images/menu/perm-icon.svg">
-                    <span>Permission Manage</span>
+                    <span>Permission</span>
                 </p>
                 <ul>
                     <@shiro.hasPermission name="perm_user">
@@ -51,6 +51,23 @@
             </li>
             </#if>
 
+            <#if hasAnyPermissions('offer')?c=='true'>
+            <li class="treeview" id="subscribe">
+                <p>
+                    <img class="menu-icon" src="${rc.contextPath}/images/menu/subscribe-icon.svg">
+                    <span>Subscribe</span>
+                </p>
+                <ul>
+                    <@shiro.hasPermission name="offer">
+                    <li class="treeview-item" id="offer">
+                        <a href="${rc.contextPath}/subscribe/offer/listView">
+                            <span>Offer List</span>
+                        </a>
+                    </li>
+                    </@shiro.hasPermission>
+                </ul>
+             </li>
+            </#if>
         </ul>
     </section>
 <div style="width: 100%; height: 100px"></div>

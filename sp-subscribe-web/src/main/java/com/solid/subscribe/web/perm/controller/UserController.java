@@ -22,9 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -104,10 +102,10 @@ public class UserController {
     @RequiresPermissions(ShiroConstants.PERM_USER)
     @RequestMapping(value="search")
     @ResponseBody
-    public PageView search(User userParam, HttpServletRequest request){
+    public PageView search(){
         PageView pageView=new PageView();
         try{
-            List<UserPageInfo> userPageInfos=userService.getUserPageInfo(userParam,request);
+            List<UserPageInfo> userPageInfos = userService.getUserPageInfo();
             pageView.setResult(userPageInfos);
         }catch(Exception e){
             e.printStackTrace();
@@ -177,10 +175,8 @@ public class UserController {
             List<Role> roleList=roleService.getValidRoles();
             model.addAttribute("roleList",roleList);
             //获取该用户的信息
-            User userParam=new User();
-            userParam.setId(Integer.valueOf(id));
-            List<UserPageInfo> userPageInfos=userService.getUserPageInfo(userParam,request);
-            model.addAttribute("userInfo",userPageInfos.get(0));
+            UserPageInfo userPageInfo = userService.getUserById(Integer.valueOf(id));
+            model.addAttribute("userInfo",userPageInfo);
             //保存访问日志
             moniLogService.saveMonitor(LogConstants.LogType.VISIT,
                     LogConstants.Page.EDIT_USER,
@@ -229,11 +225,12 @@ public class UserController {
 
 
     @RequiresPermissions(ShiroConstants.PERM_USER)
-    @RequestMapping(value="deleteUser",method = RequestMethod.POST)
+    @PostMapping(value="deleteUser")
     @ResponseBody
-    public ResultHandler deleteUser(Integer id,HttpServletRequest request){
+    public ResultHandler deleteUser(@RequestBody User user, HttpServletRequest request){
         ResultHandler resultHandler=new ResultHandler();
         resultHandler.setCode(Constants.Result.RESULTCODE_FAILURE);
+        Integer id = user.getId();
         try {
             if(null!=id){
                 userService.deleteUser(id,request);

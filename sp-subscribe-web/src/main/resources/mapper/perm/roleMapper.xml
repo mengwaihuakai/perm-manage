@@ -30,4 +30,88 @@
         and status=0
     </select>
 
+    <select  id="getValidRoles" resultMap="role" >
+        select
+        id,
+        name,
+        status,
+        create_time,
+        update_time,
+        code
+        from perm_role
+        where status=0
+        order by name
+    </select>
+
+    <select  id="getRoles" resultMap="role" parameterType="com.solid.subscribe.web.perm.entity.Role">
+        select
+        id,
+        name,
+        status,
+        create_time,
+        update_time,
+        code
+        from perm_role where 1=1
+        <if test="name!='' and name!=null">
+            and name like CONCAT('%','${name}','%')
+        </if>
+        <if test="id!='' and id!=null">
+            and id =#{id}
+        </if>
+    </select>
+
+    <select id="getRoleByName" parameterType="String" resultMap="role">
+        select
+        id,
+        name,
+        status,
+        create_time,
+        update_time,
+        code
+        from perm_role
+        where name=#{name}
+    </select>
+
+    <select id="getRoleById" parameterType="Integer" resultMap="role">
+        select
+        id,
+        name,
+        status,
+        create_time,
+        update_time,
+        code
+        from perm_role
+        where id=#{id}
+    </select>
+
+    <update id="updateRole" parameterType="com.solid.subscribe.web.perm.entity.Role">
+        update perm_role
+        set
+        name = #{name},
+        status =#{status}
+        where id=#{id}
+    </update>
+
+    <insert id="saveRole" parameterType="com.solid.subscribe.web.perm.entity.Role" useGeneratedKeys="true" keyProperty="id">
+        insert into perm_role
+        (
+        name,
+        status,
+        code
+        )
+        values
+        (
+        #{name},
+        #{status},
+        #{code}
+        )
+    </insert>
+
+    <!--删除角色数据-->
+    <delete id="deleteById" parameterType="Integer">
+        delete
+        from perm_role
+        where id=#{id}
+    </delete>
+
 </mapper>
