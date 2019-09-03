@@ -57,7 +57,7 @@ public class SubscribeService {
     private GeoIp geoIp;
     private static final Logger logger = LoggerFactory.getLogger(SubscribeService.class);
 
-    private static ExpiringMap<String, String> clientOfferMap = ExpiringMap.builder().expiration(30, TimeUnit.SECONDS)
+    private static ExpiringMap<String, String> clientOfferMap = ExpiringMap.builder().expiration(5, TimeUnit.MINUTES)//测试时先用五分钟
             .expirationPolicy(ExpirationPolicy.CREATED)
             .build();//失效时间为一天
 
@@ -83,7 +83,7 @@ public class SubscribeService {
 
             Map<Integer, OfferVo.Data> offerVoMap = offerService.getOfferIds(new HashMap<String, String>() {{
                 put("country", geoInfo.getCountry());
-                put("os","android");
+                put("os", "android");
             }});
             List<Integer> offerIds = new ArrayList<>(offerVoMap.keySet());
             List<OfferRspVo.Task> tasks = new ArrayList<>();
@@ -100,10 +100,10 @@ public class SubscribeService {
                     logger.info("The device {} does not support notifications, and the offer {} requires support notifications", userId, offerId);
                     continue;
                 }
-                if (taskTrackingService.hasSuccess(offerId, userId)) {//如果该userId已经成功执行该offer
+                /*if (taskTrackingService.hasSuccess(offerId, userId)) {//如果该userId已经成功执行该offer
                     logger.info("the device {} has successfully executed the offer {}", userId, offerId);
                     continue;
-                }
+                }*/
                 if (taskTrackingService.budgetNotEnough(offer)) {//预算不足
                     logger.info("offer {} total budget is not enough", offerId);
                     continue;
@@ -113,11 +113,12 @@ public class SubscribeService {
                     logger.info("offer {} no step exists", offerId);
                     continue;
                 }
+                String taskId = IdWorker.generateId().toString();
                 OfferRspVo.Task task = new OfferRspVo.Task()
                         .setOffer_id(offerId)
                         .setStep(taskSteps.getStep())
-                        .setTask_id(IdWorker.generateId().toString())
-                        .setUrl(taskSteps.getUrl())
+                        .setTask_id(taskId)
+                        .setUrl(taskSteps.getUrl().replace("{TASK_ID}", taskId))
                         .setIsCloseWifi(offerVoMap.get(offerId).getIsCloseWifi())
                         .setType(taskSteps.getType())
                         .setNext_on(taskSteps.getNext_on())
@@ -189,7 +190,7 @@ public class SubscribeService {
                         .setOffer_id(offerId)
                         .setStep(taskSteps.getStep())
                         .setTask_id(taskId)
-                        .setUrl(taskSteps.getUrl())
+                        .setUrl(taskSteps.getUrl().replace("{TASK_ID}", taskId))
                         .setType(taskSteps.getType())
                         .setNext_on(taskSteps.getNext_on())
                         .setJs(taskSteps.getJs());
