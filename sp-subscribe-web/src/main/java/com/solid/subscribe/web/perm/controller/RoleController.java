@@ -95,14 +95,14 @@ public class RoleController {
     @RequiresPermissions(ShiroConstants.PERM_USER)
     @RequestMapping(value="addRole",method = RequestMethod.POST)
     @ResponseBody
-    public ResultHandler addUser(@Validated Role role, BindingResult bingdingResult, String[] permissionIdArr, HttpServletRequest request){
+    public ResultHandler addUser(@Validated Role role, BindingResult bindingResult, String[] permissionIdArr, HttpServletRequest request){
         ResultHandler resultHandler =new ResultHandler();
         resultHandler.setCode(Constants.Result.RESULTCODE_FAILURE);
         try{
             if(null!=permissionIdArr&&permissionIdArr.length!=0){
-                if(bingdingResult.hasErrors()) {//校验不通过
-                    StringBuilder messages=new StringBuilder();
-                    for (FieldError fieldError : bingdingResult.getFieldErrors()) { // 获取与给定字段关联的错误
+                if(bindingResult.hasErrors()) {//校验不通过
+                    StringBuilder messages = new StringBuilder();
+                    for (FieldError fieldError : bindingResult.getFieldErrors()) { // 获取与给定字段关联的错误
                         messages.append(fieldError.getDefaultMessage());
                         messages.append("\n");
                     }

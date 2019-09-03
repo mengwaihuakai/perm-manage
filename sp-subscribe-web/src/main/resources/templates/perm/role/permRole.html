@@ -105,17 +105,17 @@
             },
         },
         computed: {
-            filteredRows: function () {
-                var data = this.reportData;
-                for (var col in this.tableColumnFilters) {
-                    var vals = this.tableColumnFilters[col];
+            filteredRows () {
+                let data = this.reportData;
+                for (let col in this.tableColumnFilters) {
+                    let vals = this.tableColumnFilters[col];
                     if (vals.length !== 0) {
                         data = data.filter(x => vals.includes(x[col]))
                     }
                 }
                 return data;
             },
-            displayData: function () {
+            displayData () {
                 const pageNum = this.tablePagination.currentPage;
                 const pageSize = this.tablePagination.pageSize;
                 const sortKey = this.tableSorting.prop;
@@ -186,7 +186,7 @@
                 }
                 return result;
             },
-            refreshReportData(){
+            refreshReportData () {
                 let vm = this;
                 vm.loading = true;
                 api.post('search', {})
@@ -200,14 +200,14 @@
                                 duration: 1500
                             });
                         } else {
-                            vm.$alert(r.status || 'Unknown', '数据加载失败', {
+                            vm.$alert('数据加载失败', '提示', {
                                 callback: action => {}
                             });
                         }
                     })
                     .catch(function (e) {
                         vm.loading = false;
-                        vm.$alert('' + e, '数据加载异常', {
+                        vm.$alert('数据加载异常', '提示', {
                             callback: action => {}
                         });
                     });
@@ -216,7 +216,7 @@
                 let nameFilter = this.nameFilter;
                 if (nameFilter) {
                     this.reportData = this.reportCopyData.filter(item => {
-                        return item.name === nameFilter;
+                        return item.name.includes(nameFilter);
                     })
                 } else {
                     this.reportData = this.reportCopyData

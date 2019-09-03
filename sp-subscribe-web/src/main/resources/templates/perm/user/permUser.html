@@ -106,17 +106,17 @@
             },
         },
         computed: {
-            filteredRows: function () {
-                var data = this.reportData;
-                for (var col in this.tableColumnFilters) {
-                    var vals = this.tableColumnFilters[col];
+            filteredRows () {
+                let data = this.reportData;
+                for (let col in this.tableColumnFilters) {
+                    let vals = this.tableColumnFilters[col];
                     if (vals.length !== 0) {
                         data = data.filter(x => vals.includes(x[col]))
                     }
                 }
                 return data;
             },
-            displayData: function () {
+            displayData () {
                 const pageNum = this.tablePagination.currentPage;
                 const pageSize = this.tablePagination.pageSize;
                 const sortKey = this.tableSorting.prop;
@@ -155,12 +155,12 @@
                             });
                             vm.reportData = vm.reportCopyData.filter(item => {
                                 return item.id !== vm.dialogId;
-                            })
+                            });
                             vm.reportCopyData = vm.reportData;
                         })
                         .catch(function (e) {
                             vm.loading = false;
-                            vm.$alert('' + e, '提示', {
+                            vm.$alert('删除该用户异常', '提示', {
                                 callback: action => {
                                 }
                             });
@@ -190,7 +190,7 @@
                 }
                 return result;
             },
-            refreshReportData(){
+            refreshReportData () {
                 let vm = this;
                 vm.loading = true;
                 api.post('search', {})
@@ -204,14 +204,14 @@
                                 duration: 1500
                             });
                         } else {
-                            vm.$alert(r.status || 'Unknown', '数据加载失败', {
+                            vm.$alert('数据加载失败', '提示', {
                                 callback: action => {}
                             });
                         }
                     })
                     .catch(function (e) {
                         vm.loading = false;
-                        vm.$alert('' + e, '数据加载异常', {
+                        vm.$alert('数据加载异常', '提示', {
                             callback: action => {}
                         });
                     });
@@ -220,7 +220,7 @@
                 let accountFilter = this.accountFilter;
                 if (accountFilter) {
                     this.reportData = this.reportCopyData.filter(item => {
-                        return item.account === accountFilter;
+                        return item.account.includes(accountFilter);
                     })
                 } else {
                     this.reportData = this.reportCopyData
@@ -233,7 +233,7 @@
                 this.tableSorting.prop = sorting.prop;
                 this.tableSorting.order = sorting.order;
             },
-            sortedRows: function (rows, prop, order) {
+            sortedRows (rows, prop, order) {
                 if (prop === null || order === null) {
                     return rows;
                 }
