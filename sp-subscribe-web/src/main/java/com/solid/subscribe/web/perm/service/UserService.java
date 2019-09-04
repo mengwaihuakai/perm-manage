@@ -92,11 +92,9 @@ public class UserService {
                     //获取content
                     CompareBeanUtils cb = new CompareBeanUtils(User.class, oldUser, user);
                     cb.compare("password", "密码");
-                    //判断是修改密码还是忘记密码页面
-                    String page = LogConstants.Page.UPDATE_PWD;
                     //保存
                     moniLogService.saveMonitor(LogConstants.LogType.OPERATE,
-                            page,
+                            LogConstants.Page.UPDATE_PWD,
                             LogConstants.PageUrl.DO_UPDATE_PWD,
                             LogConstants.OperateType.UPDATE,
                             LogConstants.ObjectType.USER,

@@ -62,14 +62,14 @@ public class UserController {
 
     @RequestMapping(value="updatePwd",method = RequestMethod.POST)
     @ResponseBody
-    public ResultHandler updatePwd(String pwd, String confirmPwd, HttpServletRequest request){
-        ResultHandler resultHandler =new ResultHandler();
+    public ResultHandler updatePwd(String password, String confirmPwd, HttpServletRequest request){
+        ResultHandler resultHandler = new ResultHandler();
         resultHandler.setCode(Constants.Result.RESULTCODE_FAILURE);
         try{
-            if(StringUtils.isNotBlank(pwd) && StringUtils.isNotBlank(confirmPwd)){
+            if(StringUtils.isNotBlank(password) && StringUtils.isNotBlank(confirmPwd)){
                 Subject subject = SecurityUtils.getSubject();
-                User user=(User)subject.getPrincipal();
-                resultHandler =userService.updatePwd(request,user.getAccount(),pwd,confirmPwd,resultHandler);
+                User user = (User)subject.getPrincipal();
+                resultHandler = userService.updatePwd(request, user.getAccount(), password, confirmPwd, resultHandler);
             }else{
                 resultHandler.setMessage("Account or password cannot be null");
             }
