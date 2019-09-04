@@ -34,7 +34,7 @@ public class SubscribeController {
     @PostMapping("/offer")
     public byte[] offer(@RequestBody byte[] body, HttpServletRequest request) {
         OfferRspVo offerRspVo = subscribeService.getOffers(BodyCover(body, "get offer"), request);
-        Response response = (offerRspVo == null || CollectionUtils.isEmpty(offerRspVo.getTasks())) ? Response.error("no suitable offer") : Response.getInstance().success(offerRspVo);
+        Response response = (offerRspVo == null || CollectionUtils.isEmpty(offerRspVo.getTasks())) ? Response.getInstance().success(new OfferRspVo().setInterval(10)) : Response.getInstance().success(offerRspVo);
         return ResponseCover(response, "get offer");
     }
 
