@@ -12,6 +12,10 @@ public interface TaskTrackingDao {
             "where offer_id=#{offerId} and state=0 and step=1 and TIMESTAMPDIFF(MINUTE,create_time, NOW()) <= 30")
     Integer selectUnConfirmCount(Integer offerId);
 
+    @Select("select tracks from t_task_tracking " +
+            "where task_id=#{taskId} and step=#{step}")
+    String selectHtml(@Param("taskId") String taskId,@Param("step") Integer step);
+
     @Select("select count(*) from t_task_tracking where offer_id=#{offerId} and state=1 and step=(select MAX(step) from t_task_steps where offer_id=#{offerId}) " +
             "and TO_DAYS(create_time)=TO_DAYS(NOW())")
     Integer selectDailyConfirmCount(Integer offerId);
