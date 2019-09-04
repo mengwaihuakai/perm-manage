@@ -64,9 +64,9 @@ public class OfferService {
     private Offer buildOffer(OfferVO offerVO){
         Offer offer = new Offer();
         ConvBeanUtil.conv(offerVO, offer);
-        offer.setTarget_os(JSON.toJSONString(offerVO.getTarget_os()));
-        offer.setTarget_country(JSON.toJSONString(offerVO.getTarget_country()));
-        offer.setTarget_operator(JSON.toJSONString(offerVO.getTarget_operator()));
+        offer.setTarget_os(offerVO.getTarget_os() == null ? null : JSON.toJSONString(offerVO.getTarget_os()));
+        offer.setTarget_country(offerVO.getTarget_country() == null ? null : JSON.toJSONString(offerVO.getTarget_country()));
+        offer.setTarget_operator(offerVO.getTarget_operator() == null ? null : JSON.toJSONString(offerVO.getTarget_operator()));
         return offer;
     }
 }

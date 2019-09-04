@@ -17,8 +17,8 @@ api.defaults.headers.post['Content-Type'] = 'application/json';
 /*三、vue*/
 let ref;
 const checkHttp = (rule, value, callback) => {
-    if (value && !value.startsWith("http://")){
-        callback(new Error('please start with "http://"'));
+    if (value && !(value.startsWith("http://") || value.startsWith("https://"))){
+        callback(new Error('please start with "http://" or "https://"'));
     } else {
         callback();
     }
@@ -50,6 +50,13 @@ const checkPlusNum = (rule, value, callback) => {
         callback();
     }
 };
+const checkDescriptionTextarea = (rule, value, callback) => {
+    if (value && (value.includes(";"))){
+        callback(new Error('cannot input ";"'));
+    } else {
+        callback();
+    }
+};
 const checkTargetTextarea = (rule, value, callback) => {
     if (value && (value.includes(",") || value.includes("*"))){
         callback(new Error('cannot input "," or "*"'));
@@ -73,7 +80,7 @@ let app = new Vue({
            pf_conversion_type: null,
            pf_payout: null,
            pf_kpi: null,
-           pf_required_deviceid: null,
+           pf_required_deviceid: 0,
            config_status: 0,
            status: 0,
            effective_date: null,
@@ -99,8 +106,7 @@ let app = new Vue({
                {validator: checkPlusNum}
            ],
            pf_required_deviceid: [
-               {validator: checkNumber},
-               {validator: checkNoNegativeInt}
+               {required: true, message: 'cannot be bull'}
            ],
            config_status: [
                {required: true, message: 'cannot be bull'}
@@ -114,6 +120,9 @@ let app = new Vue({
            url: [
                {required: true, message: 'cannot be bull'},
                {validator: checkHttp}
+           ],
+           pf_description: [
+               {validator: checkDescriptionTextarea}
            ],
            is_close_wifi: [
                {required: true, message: 'cannot be bull'}
@@ -197,6 +206,7 @@ let app = new Vue({
        //赋值
        if (isEditPage) {
            this.offer = JSON.parse(isEditPage.value);
+           this.offer.pf_description = this.offer.pf_description.replace(new RegExp(";", "g"), "\n");
            this.offer.target_os = this.offer.target_os == null ? null : this.offer.target_os.join("|").replace(new RegExp("\"", "g"), "");
            this.offer.target_operator = this.offer.target_operator == null ? null : this.offer.target_operator.join("\n").replace(new RegExp("\"", "g"), "");
            this.offer.target_country = this.offer.target_country == null ? null : this.offer.target_country.map(item => {
@@ -305,6 +315,7 @@ let app = new Vue({
        },
        genarateData: (obj) => {
            let data = {...obj};
+           data.pf_description = app.generateTextareaData(obj.pf_description).join(";");
            data.target_country = obj.target_country_mode === 0 ? null : obj.target_country;
            data.target_operator = obj.target_operator_mode === 0 ? null : app.generateTextareaData(obj.target_operator);
            data.target_os = obj.target_os.split("|");

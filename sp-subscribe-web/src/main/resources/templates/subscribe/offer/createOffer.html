@@ -10,6 +10,15 @@
     <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js" defer="defer"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js" defer="defer"></script>
     <script src="${urls.getForLookupPath('${rc.contextPath}/js/subscribe/offer.js')}" defer="defer"></script>
+    <style>
+        .form .el-input.long-width{
+            width: 420px;
+        }
+
+        .form .el-textarea{
+            width: 500px;
+        }
+    </style>
 </head>
 <body class="sidebar-close">
 <#include  "/common/menu.html" />
@@ -24,19 +33,27 @@
                 <el-row class="display-flex">
                     <div class="form-half-part">
                         <el-form-item label="Name" prop="offer_name">
-                            <el-input v-model="offer.offer_name" clearable></el-input>
+                            <el-input v-model="offer.offer_name" clearable class="long-width"></el-input>
                         </el-form-item>
                         <el-form-item label="Root ID" prop="root_offer_id">
                             <el-input type="number" v-model="offer.root_offer_id" clearable></el-input>
                         </el-form-item>
+                        <el-form-item label="Platform" prop="platform">
+                            <el-input v-model="offer.platform" clearable></el-input>
+                        </el-form-item>
                         <el-form-item label="Type" prop="type">
                             <el-input v-model="offer.type" clearable></el-input>
                         </el-form-item>
-                        <el-form-item label="PF Description" prop="pf_description">
-                            <el-input v-model="offer.pf_description" clearable></el-input>
+                        <el-form-item label="Url" prop="url">
+                            <el-input v-model="offer.url" clearable class="long-width"></el-input>
                         </el-form-item>
-                        <el-form-item label="Platform" prop="platform">
-                            <el-input v-model="offer.platform" clearable></el-input>
+                        <el-form-item label="PF Payout" prop="pf_payout">
+                            <el-input type="number" v-model="offer.pf_payout" clearable>
+                                <template slot="prepend">$</template>
+                            </el-input>
+                        </el-form-item>
+                        <el-form-item label="PF Conversion Type" prop="pf_conversion_type">
+                            <el-input v-model="offer.pf_conversion_type" clearable></el-input>
                         </el-form-item>
                         <el-form-item label="PF Category" prop="pf_category">
                             <el-input v-model="offer.pf_category" clearable></el-input>
@@ -44,17 +61,11 @@
                         <el-form-item label="PF Conversion Flow" prop="pf_conversion_flow">
                             <el-input v-model="offer.pf_conversion_flow" clearable></el-input>
                         </el-form-item>
-                        <el-form-item label="PF Conversion Type" prop="pf_conversion_type">
-                            <el-input v-model="offer.pf_conversion_type" clearable></el-input>
-                        </el-form-item>
-                        <el-form-item label="PF Payout" prop="pf_payout">
-                            <el-input type="number" v-model="offer.pf_payout" clearable></el-input>
-                        </el-form-item>
                         <el-form-item label="PF KPI" prop="pf_kpi">
                             <el-input v-model="offer.pf_kpi" clearable></el-input>
                         </el-form-item>
-                        <el-form-item label="PF Required DeviceID" prop="pf_required_deviceid">
-                            <el-input type="number" v-model="offer.pf_required_deviceid" clearable></el-input>
+                        <el-form-item label="PF Description" prop="pf_description">
+                            <el-input type="textarea" v-model="offer.pf_description" :rows="5" placeholder="please input"></el-input>
                         </el-form-item>
                     </div>
                     <div class="form-half-part">
@@ -66,17 +77,17 @@
                                 <el-radio v-for="item of configStatusRadio" :label="item.value" :key="item.value">{{item.label}}</el-radio>
                             </el-radio-group>
                         </el-form-item>
-                        <el-form-item label="Effective Date" prop="effective_date">
-                            <el-date-picker v-model="offer.effective_date" type="datetime" placeholder="please select"></el-date-picker>
-                        </el-form-item>
-                        <el-form-item label="Url" prop="url">
-                            <el-input v-model="offer.url" clearable></el-input>
+                        <el-form-item label="PF Required DeviceID" prop="pf_required_deviceid">
+                            <el-switch v-model="offer.pf_required_deviceid" active-color="#4C56C0" inactive-color="#E6E6E6" inactive-value=0 active-value=1></el-switch>
                         </el-form-item>
                         <el-form-item label="Wifi" prop="is_close_wifi">
                             <el-switch v-model="offer.is_close_wifi" active-color="#4C56C0" inactive-color="#E6E6E6" inactive-value=1 active-value=0></el-switch>
                         </el-form-item>
                         <el-form-item label="Notification" prop="is_notification_enabled">
                             <el-switch v-model="offer.is_notification_enabled" active-color="#4C56C0" inactive-color="#E6E6E6" inactive-value=0 active-value=1></el-switch>
+                        </el-form-item>
+                        <el-form-item label="Effective Date" prop="effective_date">
+                            <el-date-picker v-model="offer.effective_date" type="datetime" placeholder="please select"></el-date-picker>
                         </el-form-item>
                         <el-form-item label="Budget" prop="budget">
                             <el-input type="number" v-model="offer.budget" clearable></el-input>
