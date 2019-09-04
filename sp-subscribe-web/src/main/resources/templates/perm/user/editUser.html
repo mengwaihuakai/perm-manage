@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="${urls.getForLookupPath('${rc.contextPath}/css/common/admin.css')}">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.4.11/lib/index.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qs@6.5.1/dist/qs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js" defer="defer"></script>
+    <script src="${urls.getForLookupPath('${rc.contextPath}/js/perm/user.js')}" defer="defer"></script>
+</head>
+<body class="sidebar-close">
+<#include  "/common/menu.html" />
+<div class="content">
+    <span class="hide" id="userInfo">${userInfo}</span>
+    <span class="hide" id="roleList">${roleList}</span>
+    <div id="app">
+        <div class="form form-inline-center">
+            <el-form :model="user" :rules="rules" ref='user' label-width="160px" label-position="right">
+                <el-form-item label="Account" prop="account">
+                    <el-input v-model="user.account" clearable></el-input>
+                </el-form-item>
+                <el-form-item label="Password" prop="password">
+                    <el-input type="password" v-model="user.password" clearable></el-input>
+                </el-form-item>
+                <el-form-item label="Confirm Pwd" prop="confirmPwd">
+                    <el-input type="password" v-model="user.confirmPwd" clearable></el-input>
+                </el-form-item>
+                <el-form-item label="Status" prop="status">
+                    <el-radio-group v-model="user.status">
+                        <el-radio v-for="item of statusRadio" :label="item.value" :key="item.value">{{item.label}}</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+                <el-form-item label="Role List" prop="roleIdArr">
+                    <el-checkbox-group v-model="user.roleIdArr">
+                        <el-checkbox v-for="item of roleCheckbox" :label="item.id" :key="item.id">{{item.name}}</el-checkbox>
+                    </el-checkbox-group>
+                </el-form-item>
+            </el-form>
+
+            <el-row class="operate-row text-center">
+                <el-button type="primary" @click="submitForm('user')">Save</el-button>
+                <el-button @click="resetForm('user')" class="reset">Reset</el-button>
+            </el-row>
+        </div>
+    </div>
+</div>
+</body>
+</html>

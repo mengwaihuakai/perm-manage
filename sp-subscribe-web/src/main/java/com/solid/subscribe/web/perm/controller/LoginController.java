@@ -94,7 +94,7 @@ public class LoginController {
 
     @RequestMapping(value="/")
     public String redirect(){
-        return "redirect:/index";
+        return "redirect:/subscribe/offer/listView";
     }
 
     @RequestMapping(value="/index")

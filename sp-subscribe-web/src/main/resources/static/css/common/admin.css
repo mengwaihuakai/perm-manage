@@ -499,27 +499,33 @@ body.sidebar-close .content{
     margin-bottom: 15px;
     border: none;
 }
+
 .table-row .el-table{
     font-size: 16px;
     color: #585858;
 }
+
 .table-row .table thead{
     color: #353536;
 }
+
 .el-table td,
 .el-table th.is-leaf{
     border-bottom: 1px solid #C9C9C9;
 }
+
 .table-row .el-table tr:hover>td,
 .table-row .el-table tr:active>td{
     background-color: #E5F5FF;
 }
+
 @media (min-width:1280px) {
     .table-row .el-table .text-nowrap .cell {
         white-space: nowrap;
         overflow: visible;
     }
 }
+
 .table-row .el-select:not(.el-select--mini) .el-input__inner{
     box-sizing: border-box;
     width: 221px;
@@ -528,6 +534,7 @@ body.sidebar-close .content{
     border-radius: 25px;
     padding: 16px 50px 16px 46px;
 }
+
 .el-loading-mask{
     z-index: 200;
 }
@@ -537,6 +544,7 @@ body.sidebar-close .content{
     color: #4C56C0;
     text-decoration: underline;
 }
+
 .table-row .cell-click:hover .cell-click-a,
 .cell-click:active .cell-click-a{
     color: #7D88FB;
@@ -545,68 +553,84 @@ body.sidebar-close .content{
 .table-row .el-table tr{
     height: 69px;
 }
+
 .table-row .el-pagination{
     margin-top: 25px;
     padding-left: 0;
 }
+
 .table-row .el-pagination.is-background .el-pager li:not(.disabled).active{
     background-color: #E5F5FF;
     color: #ABABAB;
 }
+
 .table-row .el-table th{
     font-family: LucidaGrandeBold;
     font-weight: bold;
     line-height: 18px;
     color: #353536;
 }
+
 .table-row .el-table.text-center th,
 .table-row .el-table.text-center td{
     text-align: center;
 }
+
 .table-row .el-table td i{
     color: #65B3E7;
     font-weight: bold;
     cursor: pointer;
 }
+
 .table-row .el-table td i:not(.icon-small){
     min-width: 60px;
     font-size: 28px;
 }
+
 .table-row .el-table td i:hover{
     color: #7D88FB;
     cursor: pointer;
 }
+
 .table-row .el-table td i:active{
     color: #4C56C0;
 }
+
 .table-row .tbl-filterable {
     cursor: cell
 }
+
 .table-row .el-tag{
     font-size: 16px;
 }
+
 .table-row tbody .el-tag{
     display: inline-block;
     width: 90px;
 }
+
 .chart-row,
 .table-row{
     background-color: #FFF;
     box-shadow: 0 2px 12px 0 rgba(105,105,105,0.11);
     border-radius:6px;
 }
+
 .form{
     background-color: #FFF;
     padding: 40px 52px;
     margin-bottom: 24px;
 }
+
 .form .display-flex{
     display: flex;
     flex-wrap: wrap;
 }
+
 .form .el-form>.display-flex{
     justify-content: space-between;
 }
+
 @media (min-width: 1280px) {
     .form .el-form>.display-flex>.form-half-part{
         width: 50%;
@@ -615,28 +639,35 @@ body.sidebar-close .content{
         width: 33.33%;
     }
 }
+
 .form .form-half-part .form-half-part .el-input{
     width: 150px;
 }
+
 .form .form-half-part .form-half-part:nth-child(2) .el-input{
     margin-left: 16px;
 }
+
 .form .form-half-part .form-half-part:last-child label{
     opacity: 0;
 }
+
 .form .el-form-item{
     margin-bottom: 30px;
 }
+
 .el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap>.el-form-item__label:before,
 .el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before {
     content: '';
 }
+
 .el-form-item.is-required:not(.is-no-asterisk) .el-form-item__label-wrap>.el-form-item__label:after,
 .el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:after {
     content: '*';
     color: #F56C6C;
     margin-right: 4px;
 }
+
 .form .el-select .el-input__suffix{
     box-sizing: border-box;
     margin: 8px 0;
@@ -644,27 +675,33 @@ body.sidebar-close .content{
     height: 25px;
     border-left: 1px solid rgba(159,167,181,0.413);
 }
+
 .form .el-select .el-input .el-select__caret{
     color: #9FA7B5;
 }
+
 .form .el-select.el-select-dropdown__item{
     height: 42px;
     line-height: 42px;
     font-size: 14px;
 }
+
 .form .el-select .el-icon-arrow-up:before {
     position: relative;
     top: -8px;
 }
+
 .form .el-input,
 .form .el-input-number{
     box-sizing: border-box;
     width: 240px;
     min-height: 42px;
 }
+
 .form .el-input__inner{
     min-height: 42px!important;
 }
+
 .form .el-input__inner,
 .form textarea{
     background: #F6F8FB;
@@ -731,6 +768,32 @@ body.sidebar-close .content{
 
 .form .el-select.tag-outer-select .el-input--suffix{
     visibility: hidden;
+}
+
+.form.form-inline-center .el-form-item{
+    width: 800px;
+    position: relative;
+    margin: auto;
+    left: 0;
+    right: 0;
+}
+
+.form.form-inline-center .el-form-item__label,
+.form.form-inline-center .el-form-item__content {
+    display: inline-block;
+}
+
+.form.form-inline-center .el-checkbox {
+    display: block;
+}
+
+.form.form-inline-center .el-form-item__label{
+    vertical-align: top;
+    margin-top: 22px;
+}
+
+.form.form-inline-center .el-input{
+    width: 380px;
 }
 
 .tag-out-select-dropdown,

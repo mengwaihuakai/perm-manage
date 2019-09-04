@@ -189,7 +189,7 @@ public class UserService {
             return resultHandler;
         }
         if (!StringUtils.equals(oldUser.getAccount(), user.getAccount())) {//更改了账号信息
-            if (StringUtils.equals(user.getAccount(), "account")) {
+            if (StringUtils.equals(user.getAccount(), "admin")) {
                 resultHandler.setMessage("不可更改管理员账号！");
                 return resultHandler;
             }

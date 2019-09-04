@@ -1,5 +1,7 @@
 package com.solid.subscribe.web.perm.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.solid.subscribe.web.perm.entity.Permission;
 import com.solid.subscribe.web.perm.entity.Role;
 import com.solid.subscribe.web.perm.service.MoniLogService;
@@ -33,7 +35,7 @@ public class RoleController {
     MoniLogService moniLogService;
     @Autowired
     RoleService roleService;
-    @Autowired(required = false)
+    @Autowired
     PermissionService permissionService;
 
     @RequiresPermissions(ShiroConstants.PERM_ROLE)
@@ -75,8 +77,8 @@ public class RoleController {
     public String toAddRole(Model model, HttpServletRequest request){
         try{
             //分类获取所有有效的权限
-            List<Permission> permissionList=permissionService.getValidPermissions();
-            model.addAttribute("permissionList",permissionList);
+            List<Permission> permissionList = permissionService.getValidPermissions();
+            model.addAttribute("permissionList", JSON.toJSONString(permissionList, SerializerFeature.UseSingleQuotes));
             //保存访问日志
             moniLogService.saveMonitor(LogConstants.LogType.VISIT,
                     LogConstants.Page.CREATE_ROLE,
@@ -130,8 +132,8 @@ public class RoleController {
             Role roleParam=new Role();
             roleParam.setId(Integer.valueOf(id));
             List<RolePageInfo> rolePageInfos=roleService.getRolePageInfo(roleParam,request);
-            model.addAttribute("roleInfo",rolePageInfos.get(0));
-            model.addAttribute("permissionList",permissionList);
+            model.addAttribute("roleInfo", JSON.toJSONString(rolePageInfos.get(0), SerializerFeature.UseSingleQuotes));
+            model.addAttribute("permissionList", JSON.toJSONString(permissionList, SerializerFeature.UseSingleQuotes));
             //保存访问日志
             moniLogService.saveMonitor(LogConstants.LogType.VISIT,
                     LogConstants.Page.EDIT_ROLE,

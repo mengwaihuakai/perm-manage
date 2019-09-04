@@ -34,12 +34,12 @@
                 <el-table-column key="status" prop="status" label="Status" align="center" sortable="custom"></el-table-column>
                 <el-table-column key="createTime" prop="createTime" label="Create Time" align="center" sortable>
                     <template slot-scope="scope">
-                        {{scope.row.createTime.substr(0,13).replace('T', ' ')}}
+                        {{scope.row.createTime ? scope.row.createTime.substr(0,13).replace('T', ' ') : null}}
                     </template>
                 </el-table-column>
                 <el-table-column key="updateTime" prop="updateTime" label="Update Time" align="center" sortable>
                     <template slot-scope="scope">
-                        {{scope.row.updateTime.substr(0,13).replace('T', ' ')}}
+                        {{scope.row.updateTime ? scope.row.updateTime.substr(0,13).replace('T', ' ') : null}}
                     </template>
                 </el-table-column>
                 <el-table-column key="actions" label="Actions" align="center" sortable="custom">

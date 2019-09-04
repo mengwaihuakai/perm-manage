@@ -3,10 +3,12 @@ package com.solid.subscribe.web.perm.service;
 import com.solid.subscribe.web.perm.dao.PermissionMapper;
 import com.solid.subscribe.web.perm.entity.Permission;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
 
+@Service
 public class PermissionService {
 
     @Autowired

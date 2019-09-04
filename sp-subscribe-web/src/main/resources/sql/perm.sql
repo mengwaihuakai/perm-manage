@@ -51,7 +51,8 @@ CREATE TABLE `perm_permission` (
 	`id` INT (11) NOT NULL AUTO_INCREMENT COMMENT '权限ID',
 	`name` VARCHAR (200) DEFAULT '' COMMENT '权限名称',
 	`code` VARCHAR (100) DEFAULT '' COMMENT '权限代码--菜单名称代码:菜单操作代码',
-	`menu_code` VARCHAR (100) DEFAULT '' COMMENT '父菜单名称代码',
+	`father_code` VARCHAR (100) DEFAULT '' COMMENT '父菜单名称代码',
+	`father_name` VARCHAR (100) DEFAULT '' COMMENT '父菜单名称',
 	`status` INT DEFAULT 0 COMMENT '权限状态',
 	`create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
 	`update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
@@ -114,11 +115,10 @@ CREATE TABLE `perm_shiro_session` (
 	CONSTRAINT pk_sessions PRIMARY KEY (id)
 ) ENGINE = INNODB DEFAULT CHARSET = 'utf8' COMMENT 'session表';
 
-insert into perm_permission(name,code,menu_code,status)values('User Manage','perm_user','perm_manage',0);
-insert into perm_permission(name,code,menu_code,status)values('Role Manege','perm_role','perm_manage',0);
-insert into perm_permission(name,code,menu_code,status)values('Log Summary','log_summary','log_summary',0);
+insert into perm_permission(name,code,father_code,father_name,status)values('User Manage','perm_user','perm_manage','Permission',0);
+insert into perm_permission(name,code,father_code,father_name,status)values('Role Manege','perm_role','perm_manage','Permission',0);
+insert into perm_permission(name,code,father_code,father_name,status)values('Log Summary','log_summary','log_summary','Log Summary',0);
 
-INSERT INTO `perm_role` VALUES ('1', '管理员', '0', '2018-12-12 21:34:20', '2018-12-12 21:34:20');
 
 insert into perm_user (id, account, password, status) values (1, 'admin', '88212f91e2e9cf36981a91b6c518af5c', 0);
 insert into perm_role (id, name, code, status) values (1, 'admin', 'admin', 0);
@@ -129,5 +129,5 @@ insert into perm_role_permission (permission_id, role_id) values (3,1);
 
 
 /*offer页面*/
-INSERT INTO `perm_permission` (`name`, `code`, `menu_code`, `status`) VALUES ('Offer', 'offer', 'subscribe', '0');
+INSERT INTO `perm_permission` (`name`, `code`, `father_code`, `father_name`, `status`) VALUES ('Offer', 'offer', 'subscribe', 'Subscribe', '0');
 insert into perm_role_permission (permission_id, role_id) values (4,1);

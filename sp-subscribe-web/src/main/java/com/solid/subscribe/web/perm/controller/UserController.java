@@ -1,6 +1,7 @@
 package com.solid.subscribe.web.perm.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.solid.subscribe.web.perm.entity.Role;
 import com.solid.subscribe.web.perm.entity.User;
 import com.solid.subscribe.web.perm.service.MoniLogService;
@@ -120,7 +121,7 @@ public class UserController {
         try{
             //获取所有有效的角色
             List<Role> roleList=roleService.getValidRoles();
-            model.addAttribute("roleList",roleList);
+            model.addAttribute("roleList", JSON.toJSONString(roleList, SerializerFeature.UseSingleQuotes));
             //保存访问日志
             moniLogService.saveMonitor(LogConstants.LogType.VISIT,
                     LogConstants.Page.CREATE_USER,
@@ -173,10 +174,10 @@ public class UserController {
         try{
             //获取所有有效的role
             List<Role> roleList=roleService.getValidRoles();
-            model.addAttribute("roleList",roleList);
+            model.addAttribute("roleList", JSON.toJSONString(roleList, SerializerFeature.UseSingleQuotes));
             //获取该用户的信息
             UserPageInfo userPageInfo = userService.getUserById(Integer.valueOf(id));
-            model.addAttribute("userInfo",userPageInfo);
+            model.addAttribute("userInfo", JSON.toJSONString(userPageInfo, SerializerFeature.UseSingleQuotes));
             //保存访问日志
             moniLogService.saveMonitor(LogConstants.LogType.VISIT,
                     LogConstants.Page.EDIT_USER,

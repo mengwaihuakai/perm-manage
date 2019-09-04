@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Role</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="${urls.getForLookupPath('${rc.contextPath}/css/common/admin.css')}">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.4.11/lib/index.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js" defer="defer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qs@6.5.1/dist/qs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js" defer="defer"></script>
+    <script src="${urls.getForLookupPath('${rc.contextPath}/js/perm/role.js')}" defer="defer"></script>
+    <style>
+        .el-table{
+            width: 700px;
+            font-size: 16px;
+            border: 1px solid #e2e1e1;
+            border-bottom: none;
+        }
+
+        .el-table td, .el-table th.is-leaf {
+            border-bottom: 1px solid #e2e1e1;
+            padding: 18px 20px;
+        }
+
+        .form.form-inline-center .el-form-item {
+            width: 1000px;
+        }
+    </style>
+</head>
+<body class="sidebar-close">
+<#include  "/common/menu.html" />
+<div class="content">
+    <span class="hide" id="permissionList">${permissionList}</span>
+    <span class="hide" id="roleInfo">${roleInfo}</span>
+    <div id="app">
+        <div class="form form-inline-center">
+            <el-form :model="role" :rules="rules" ref='role' label-width="150px" label-position="right">
+                <el-form-item label="Name" prop="name">
+                    <el-input v-model="role.name" clearable></el-input>
+                </el-form-item>
+                <el-form-item label="Code" prop="code">
+                    <el-input v-model="role.code" clearable></el-input>
+                </el-form-item>
+                <el-form-item label="Status" prop="status">
+                    <el-radio-group v-model="role.status">
+                        <el-radio v-for="item of statusRadio" :label="item.value" :key="item.value">{{item.label}}</el-radio>
+                    </el-radio-group>
+                </el-form-item>
+
+                <el-form-item label="Permission List" prop="permissionIdArr">
+                    <el-table :data="permissionTableData" ref="permissionTable" width="100%">
+                        <el-table-column key="fatherName" prop="fatherName" label="Father Menu"></el-table-column>
+                        <el-table-column key="all" prop="" label="Child Menu">
+                            <template slot-scope="scope">
+                                <el-checkbox v-model="scope.row.all" label="all" key="all"
+                                             @change="selectAll(scope.row.fatherCode, scope.row.all)">
+                                    All
+                                </el-checkbox>
+                            </template>
+                        </el-table-column>
+                        <el-table-column key="childPermList" prop="childPermList" label="">
+                            <template slot-scope="scope">
+                                <el-checkbox-group v-model="role.permissionIdArr">
+                                    <el-checkbox v-for="item of scope.row.childPermList" :label="item.id" :key="item.id"
+                                                 @change="selectOne(scope.row.fatherCode, item.id)">
+                                        {{item.name}}
+                                    </el-checkbox>
+                                </el-checkbox-group>
+                            </template>
+                        </el-table-column>
+                    </el-table>
+                </el-form-item>
+
+            </el-form>
+
+            <el-row class="operate-row text-center">
+                <el-button type="primary" @click="submitForm('role')">Save</el-button>
+                <el-button @click="resetForm('role')" class="reset">Reset</el-button>
+            </el-row>
+        </div>
+    </div>
+</div>
+</body>
+</html>

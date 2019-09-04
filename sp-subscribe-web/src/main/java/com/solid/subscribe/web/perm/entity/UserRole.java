@@ -1,5 +1,6 @@
 package com.solid.subscribe.web.perm.entity;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Table;
@@ -10,6 +11,7 @@ import java.sql.Timestamp;
  * Created by ZOOMY on 2018/8/20.
  */
 @Table(name="perm_user_role")
+@Data
 public class UserRole {
     /*用户ID*/
     @Id
@@ -22,45 +24,4 @@ public class UserRole {
     /*创建时间*/
     private Timestamp createTime;
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
-
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof UserRole)) return false;
-
-        UserRole userRole = (UserRole) o;
-
-        if (getUserId() != userRole.getUserId()) return false;
-        return getRoleId() == userRole.getRoleId();
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getUserId();
-        result = 31 * result + getRoleId();
-        return result;
-    }
 }
