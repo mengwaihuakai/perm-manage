@@ -17,5 +17,4 @@ public interface OfferDao {
             "from t_offer " +
             "where status=1 and effective_date>NOW()")
     List<Offer> selectAllActiveOffer();//查询状态是激活状态的且在有效期内的
-
 }

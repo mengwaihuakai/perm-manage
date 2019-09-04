@@ -2,6 +2,8 @@ package com.solid.subscribe.vo;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
+
 import java.util.Map;
 
 /**
@@ -20,6 +22,7 @@ public class OfferVo {
         this.targeting = targeting;
     }
 
+    @ToString
     @Getter
     public static class Data {
         private Integer offer_id;

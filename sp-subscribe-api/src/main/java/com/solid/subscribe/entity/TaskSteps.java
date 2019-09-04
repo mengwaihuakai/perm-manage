@@ -1,6 +1,7 @@
 package com.solid.subscribe.entity;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author fanyongju
@@ -8,6 +9,7 @@ import lombok.Data;
  * @date 2019/8/27 14:47
  */
 @Data
+@Accessors(chain = true)
 public class TaskSteps {
     private Integer offer_id;
     private Integer step;

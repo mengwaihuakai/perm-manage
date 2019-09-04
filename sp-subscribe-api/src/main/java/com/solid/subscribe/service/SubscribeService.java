@@ -8,6 +8,7 @@ import com.solid.subscribe.dao.TaskErrorDao;
 import com.solid.subscribe.dao.TaskStepsDao;
 import com.solid.subscribe.dao.TaskTrackingDao;
 import com.solid.subscribe.entity.TaskError;
+import com.solid.subscribe.entity.TaskReport;
 import com.solid.subscribe.entity.TaskSteps;
 import com.solid.subscribe.entity.TaskTracking;
 import com.solid.subscribe.util.GeoIp;
@@ -28,12 +29,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
-import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -44,23 +45,30 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class SubscribeService {
     @Autowired
-    private OfferService offerService;
-    @Autowired
     private TaskStepsDao taskStepsDao;
     @Autowired
     private TaskTrackingDao taskTrackingDao;
     @Autowired
+    private TaskErrorDao taskErrorDao;
+    @Autowired
+    private OfferService offerService;
+    @Autowired
     private TaskTrackingService taskTrackingService;
     @Autowired
-    private TaskErrorDao taskErrorDao;
+    private TaskReportService taskReportService;
+    @Autowired
+    private OfferUserService offerUserService;
+    @Autowired
+    private TaskStepsService taskStepsService;
     @Autowired
     private GeoIp geoIp;
     private static final Logger logger = LoggerFactory.getLogger(SubscribeService.class);
 
+    //创建一个可重用固定线程数的线程池
+    private ExecutorService threadPool = Executors.newFixedThreadPool(4);
     private static ExpiringMap<String, String> clientOfferMap = ExpiringMap.builder().expiration(5, TimeUnit.MINUTES)//测试时先用五分钟
             .expirationPolicy(ExpirationPolicy.CREATED)
             .build();//失效时间为一天
-
     private ObjectMapper objectMapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
     public OfferRspVo getOffers(String body, HttpServletRequest req) {
@@ -80,18 +88,24 @@ public class SubscribeService {
             }
             boolean isNotificationEnabled = client.has("isNotificationEnabled") && client.get("isNotificationEnabled").asBoolean();
             String bundle = client.has("app_pkg") ? client.get("app_pkg").asText() : null;
-
             Map<Integer, OfferVo.Data> offerVoMap = offerService.getOfferIds(new HashMap<String, String>() {{
                 put("country", geoInfo.getCountry());
                 put("os", "android");
             }});
             List<Integer> offerIds = new ArrayList<>(offerVoMap.keySet());
+            if (offerIds.size() < 1) {
+                logger.info("country {} not directed to any offer", geoInfo.getCountry());
+            }
             List<OfferRspVo.Task> tasks = new ArrayList<>();
             Random random = new Random();
             while (tasks.size() < 1 && offerIds.size() > 0) {
                 Integer offerId = offerIds.get(random.nextInt(offerIds.size()));//随机选择一个offerId
                 offerIds.remove(offerId);//选择后就从list中移除，防止重复选择
                 OfferVo.Data offer = offerVoMap.get(offerId);
+                if (offer == null) {//防止异常情况
+                    logger.info("the offer {} was accidentally deleted", offerId);
+                    continue;
+                }
                 if (clientOfferMap.containsKey(offerId + ":" + userId)) {//如果一个小时内offer已经推送给该userId
                     logger.info("the offer {} has been pushed to the device {} within an hour", offerId, userId);
                     continue;
@@ -169,8 +183,24 @@ public class SubscribeService {
                         .setDevice_info(client != null ? client.toString() : null)
                         .setTracks(tracks)
                         .setState(Constant.STATE_SUCCESS));//更新tracks到db
+                //TODO 判断是否是第一步任务，异步记录
+                /*String finalBundle = bundle;
+                threadPool.execute(() -> {
+                    if (taskStepsService.isFirstStep(offerId, step)) {
+                        taskReportService.recordClick(new TaskReport()
+                                .task_id(taskId)
+                                .offer_id(offerId)
+                                .country(Objects.requireNonNull(geoInfo).getCountry()).bundle(finalBundle));
+                    }
+                    offerUserService.recordSuccessUser(offerId,userId);
+                });*/
                 TaskSteps taskSteps = taskStepsDao.selecNextStep(offerId, step);
-                if (taskSteps == null) {//没有下一步任务，返回释放任务
+                if (taskSteps == null) {//没有下一步任务，该任务是最终任务，返回释放任务
+                    //TODO 异步记录预转化
+                    /*threadPool.execute(() -> taskReportService.recordConv(new TaskReport()
+                            .task_id(taskId)
+                            .offer_id(offerId)
+                            .country(Objects.requireNonNull(geoInfo).getCountry()).bundle(finalBundle)));*/
                     return new OfferRspVo.Task()
                             .setOffer_id(offerId)
                             .setStep(step + 1)
