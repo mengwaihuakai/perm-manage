@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solid.subscribe.web.perm.dao.MoniLogMapper">
+    <resultMap type="com.solid.subscribe.web.perm.entity.MonitorLog" id="log">
+        <result property="id" column="id" />
+        <result property="logType" column="log_type" />
+        <result property="pageUrl" column="page_url" />
+        <result property="page" column="page" />
+        <result property="operateType" column="operate_type" />
+        <result property="objectType" column="object_type" />
+        <result property="content" column="content"/>
+        <result property="operatorName" column="operator_name"/>
+        <result property="operatorAccount" column="operator_account"/>
+        <result property="systemIp" column="system_ip"/>
+        <result property="userAgent" column="user_agent"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+    <!-- 保存日志数据 -->
+    <insert id="addLog" parameterType="com.solid.subscribe.web.perm.entity.MonitorLog">
+        insert into monitor_log
+        (
+        log_type,
+        page,
+        page_url,
+        operate_type,
+        object_type,
+        object_id,
+        content,
+        operator_name,
+        operator_account,
+        system_ip,
+        user_agent,
+        create_time
+        )
+        values
+        (
+        #{logType},
+        #{page},
+        #{pageUrl},
+        #{operateType},
+        #{objectType},
+        #{objectId},
+        #{content},
+        #{operatorName},
+        #{operatorAccount},
+        #{systemIp},
+        #{userAgent},
+        #{createTime}
+        )
+    </insert>
+</mapper>

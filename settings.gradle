@@ -1,4 +1,1 @@
-rootProject.name = 'sp-subscribe-server'
-include 'sp-subscribe-api'
-include 'sp-subscribe-web'
-
+rootProject.name = 'perm-manage-vue-element'
