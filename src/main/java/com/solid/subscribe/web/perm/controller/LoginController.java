@@ -66,26 +66,27 @@ public class LoginController {
                 resultHandler.setMessage("Account or password cannot be null");
             }
         } catch(UnknownAccountException uae){
-            logger.info("对用户[" + account + "]进行登录验证..验证未通过,未知账户");
+            logger.info("对用户[" + account + "]进行登录验证..验证未通过,未知账户", uae);
             resultHandler.setMessage("Account does not exist");
         } catch(IncorrectCredentialsException ice){
-            logger.info("对用户[" + account + "]进行登录验证..验证未通过,错误密码");
+            logger.info("对用户[" + account + "]进行登录验证..验证未通过,错误密码", ice);
                 resultHandler.setMessage("The password is incorrect");
         } catch(LockedAccountException lae){
-            logger.info("对用户[" + account + "]进行登录验证..验证未通过,账户已冻结");
+            logger.info("对用户[" + account + "]进行登录验证..验证未通过,账户已冻结", lae);
             resultHandler.setMessage("Account is frozen");
         } catch (DisabledAccountException lae) {
-            logger.info("对用户[" + account + "]进行登录验证..验证未通过,账户状态无效");
+            logger.info("对用户[" + account + "]进行登录验证..验证未通过,账户状态无效", lae);
             resultHandler.setMessage("Invalid account status");
         } catch (ExcessiveAttemptsException eae) {
-            logger.info("对用户[" + account + "]进行登录验证..验证未通过,错误次数过多");
+            logger.info("对用户[" + account + "]进行登录验证..验证未通过,错误次数过多", eae);
             resultHandler.setMessage("Too many incorrect username or password");
         } catch (AuthenticationException ae) {
-            logger.info("对用户[" + account + "]进行登录验证..验证未通过,堆栈轨迹如下");
+            logger.info("对用户[" + account + "]进行登录验证..验证未通过,堆栈轨迹如下", ae);
             ae.printStackTrace();
             resultHandler.setMessage("Username or password is incorrect");
         }catch(Exception e){
             e.printStackTrace();
+            logger.error("登陆失败", e);
             resultHandler.setMessage("Please contact the administrator");
         }
         return resultHandler;
@@ -102,8 +103,4 @@ public class LoginController {
         return "index";
     }
 
-    @RequestMapping(value="/error")
-    public String error(){
-        return "common/error";
-    }
 }

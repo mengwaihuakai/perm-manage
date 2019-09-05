@@ -2,304 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f7f2f55-8a96-4377-ace7-eea9e5811dad" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__antlr_antlr_2_7_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__aopalliance_aopalliance_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__asm_asm_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_classic_1_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_alibaba_fastjson_1_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_inject_extensions_guice_multibindings_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_inject_guice_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_zxing_core_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_zxing_javase_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jhlabs_filters_2_0_235.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mchange_mchange_commons_java_0_2_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_mortennobel_java_image_scaling_0_8_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_11_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_14_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_sun_mail_javax_mail_1_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_zaxxer_HikariCP_2_7_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_beanutils_commons_beanutils_1_8_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_codec_commons_codec_1_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__dom4j_dom4j_1_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_projectreactor_reactor_core_3_1_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_activation_activation_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_annotation_javax_annotation_api_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_servlet_javax_servlet_api_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_transaction_javax_transaction_api_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_validation_validation_api_2_0_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__log4j_log4j_1_2_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__mysql_mysql_connector_java_5_1_46.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_1_7_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_bytebuddy_byte_buddy_agent_1_7_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_mingsoft_shiro_freemarker_tags_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_minidev_json_smart_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sourceforge_jexcelapi_jxl_2_6_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_lang3_3_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_text_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_httpcomponents_httpclient_4_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_httpcomponents_httpcore_4_4_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_api_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_logging_log4j_log4j_to_slf4j_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_shiro_shiro_all_1_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_shiro_shiro_core_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_shiro_shiro_guice_1_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_shiro_shiro_spring_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_shiro_shiro_web_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_core_8_5_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_el_8_5_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_32.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_aspectj_aspectjweaver_1_8_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_assertj_assertj_core_3_9_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_freemarker_freemarker_2_3_28.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_common_hibernate_commons_annotations_5_0_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_hibernate_core_5_2_17_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_2_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_validator_hibernate_validator_6_0_11_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_javassist_javassist_3_22_0_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_jandex_2_0_3_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mockito_mockito_core_2_15_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mybatis_mybatis_3_4_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mybatis_mybatis_spring_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_objenesis_objenesis_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_projectlombok_lombok_1_16_20.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_quartz_scheduler_quartz_2_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_jul_to_slf4j_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_log4j_over_slf4j_1_7_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_sonatype_sisu_inject_cglib_2_2_1_v20090111.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_autoconfigure_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_aop_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_data_jpa_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_freemarker_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_jdbc_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_json_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_logging_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_test_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_tomcat_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_web_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_test_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_test_autoconfigure_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_commons_2_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_data_spring_data_jpa_2_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_integration_spring_integration_core_5_0_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_integration_spring_integration_mail_5_0_7_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_retry_spring_retry_1_2_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aop_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aspects_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_beans_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_support_4_3_2_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_core_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_expression_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_jcl_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_jdbc_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_messaging_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_orm_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_test_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_tx_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_web_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_webmvc_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_xmlunit_xmlunit_core_2_5_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_yaml_snakeyaml_1_19.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/SubscribeServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/constant/Constant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/controller/DebugController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/controller/ReportController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/controller/SubscribeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/dao/OfferDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/dao/OfferUserDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/dao/TaskErrorDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/dao/TaskReportDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/dao/TaskStepsDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/dao/TaskTrackingDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/entity/Offer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/entity/OfferUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/entity/TaskError.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/entity/TaskReport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/entity/TaskSteps.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/entity/TaskTracking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/service/OfferService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/service/OfferUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/service/SubscribeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/service/TaskReportService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/service/TaskStepsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/service/TaskTrackingService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/Engine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/EngineBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/Index.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/MatchResult.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/Matcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/Setting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/Tag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/ex/BadTagSettingException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/ex/DuplicateTagException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/ex/TargetingException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/targeting/ex/UnknownTagException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/util/CipherHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/util/GeoIp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/util/IdWorker.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/vo/OfferRspVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/vo/OfferVo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/vo/Response.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/java/com/solid/subscribe/vo/Tuple2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/resources/GeoIP2-Country.mmdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/resources/GeoIP2-ISP.mmdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/resources/application-dev.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/resources/application-prod.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/main/resources/logback-spring.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-api/src/test/java/com/solid/subscribe/SubscribeServerApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/SpSubscribeWebApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/controller/OfferController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/dao/CountryDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/dao/OfferDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/entity/Offer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/controller/RoleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/dao/MoniLogMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/dao/PermissionMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/dao/RoleMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/dao/RolePermissionMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/dao/ShiroSessionMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/dao/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/dao/UserRoleMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/entity/MonitorLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/entity/Permission.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/entity/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/entity/RolePermission.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/entity/ShiroSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/entity/UserRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/service/MoniLogService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/service/PermissionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/service/RoleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/CombineBeans.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/CompareBeanUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/InternetProtocol.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/LogConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/PageView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/ResourceUrlProviderController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/ResultHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/shiro/ExceptionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/shiro/HasAnyPermissions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/shiro/MyAccessFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/shiro/MyShiroRealm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/shiro/SerializableUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/shiro/ShiroConfigure.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/shiro/ShiroConstants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/shiro/ShiroSessionDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/util/shiro/ShiroTagFreeMarkerConfigurer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/vo/LogPageInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/vo/RolePageInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/perm/vo/UserPageInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/service/CountryService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/service/OfferService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/utils/ConvBeanUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/utils/ProcessValidUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/vo/CountryVO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/vo/Response.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/vo/SwitchVO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/java/com/solid/subscribe/web/vo/offer/OfferVO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/application-dev.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/application-su.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/logback-spring.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/mapper/perm/permissionMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/mapper/perm/roleMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/mapper/perm/rolePermissionMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/mapper/perm/shiroSessionMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/mapper/perm/userMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/mapper/perm/userRoleMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/sql/perm.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/css/common/admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/LucidaGrande.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/LucidaGrande.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/LucidaGrande.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/LucidaGrande.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/LucidaGrandeBold.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/LucidaGrandeBold.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/LucidaGrandeBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/LucidaGrandeBold.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/element-icons.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/fonts/element-icons.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/images/common/calendar_icon_default.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/images/common/calendar_icon_disable.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/images/login/bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/images/login/main_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/images/menu/perm-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/images/menu/subscribe-icon.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/js/perm/role.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/js/perm/user.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/js/subscribe/offer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/plugins/echarts/echarts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/plugins/echarts/echarts.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/static/plugins/jquery/jquery-3.3.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/common/error.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/common/menu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/common/updatePwd.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/perm/role/addRole.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/perm/role/editRole.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/perm/role/permRole.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/perm/user/addUser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/perm/user/editUser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/perm/user/permUser.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/subscribe/offer/createOffer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/subscribe/offer/editOffer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/main/resources/templates/subscribe/offer/offerList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sp-subscribe-web/src/test/java/com/solid/subscribe/web/SpSubscribeWebApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/error.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -318,19 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MoniLogService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/service/MoniLogService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MonitorLog.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/entity/MonitorLog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
+            <state relative-caret-position="285">
               <caret line="15" column="5" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -366,29 +64,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="96" column="31" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
+            <state relative-caret-position="411">
+              <caret line="88" column="36" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="perm.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/sql/perm.sql">
+      <file leaf-file-name="RoleController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/RoleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="124" column="43" selection-start-line="124" selection-start-column="43" selection-end-line="124" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Lombok.java" pinned="false" current-in-tab="true">
-        <entry file="jar://D:/install/gradle/gradle-5.2.1/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/69ebf81bb97bdb3c9581c171762bb4929cb5289c/lombok-1.16.20-sources.jar!/lombok/Lombok.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+            <state relative-caret-position="245">
+              <caret line="230" column="42" selection-start-line="230" selection-start-column="42" selection-end-line="230" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -825,8 +514,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/entity/MonitorLog.java" />
         <option value="$PROJECT_DIR$/settings.gradle" />
         <option value="$PROJECT_DIR$/src/main/resources/logback-spring.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/sql/perm.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/util/shiro/ExceptionController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/RoleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java" />
       </list>
     </option>
   </component>
@@ -839,7 +531,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-6" />
     <option name="width" value="1938" />
     <option name="height" value="1029" />
@@ -849,8 +541,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -861,18 +551,78 @@
             <path>
               <item name="sp-subscribe-web" type="b2602c69:ProjectViewProjectNode" />
               <item name="perm-manage-vue-element" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sp-subscribe-web" type="b2602c69:ProjectViewProjectNode" />
               <item name="perm-manage-vue-element" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="libraries" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="sp-subscribe-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="perm-manage-vue-element" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sp-subscribe-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="perm-manage-vue-element" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sp-subscribe-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="perm-manage-vue-element" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="perm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sp-subscribe-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="perm-manage-vue-element" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="perm" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sp-subscribe-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="perm-manage-vue-element" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sp-subscribe-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="perm-manage-vue-element" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sp-subscribe-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="perm-manage-vue-element" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -881,7 +631,7 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="SearchEverywhereHistoryKey" value="lombok&#9;PSI&#9;JAVA://lombok.Lombok&#10;lo&#9;PSI&#9;JAVA://com.solid.subscribe.web.perm.controller.LoginController" />
+    <property name="SearchEverywhereHistoryKey" value="user&#9;PSI&#9;JAVA://com.solid.subscribe.web.perm.controller.UserController&#10;lombok&#9;PSI&#9;JAVA://lombok.Lombok&#10;lo&#9;PSI&#9;JAVA://com.solid.subscribe.web.perm.controller.LoginController" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -892,6 +642,11 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\perm-manage-vue-element\src\main\resources\templates\common" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1003,16 +758,25 @@
       <workItem from="1567595950124" duration="192000" />
       <workItem from="1567596176221" duration="491000" />
       <workItem from="1567596709625" duration="64000" />
-      <workItem from="1567596808190" duration="348000" />
+      <workItem from="1567596808190" duration="946000" />
+      <workItem from="1567650939396" duration="642000" />
+      <workItem from="1567653822001" duration="515000" />
     </task>
+    <task id="LOCAL-00001" summary="添加错误页面">
+      <created>1567651556483</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1567651556484</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1494000" />
+    <option name="totallyTimeSpent" value="3249000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -1026,28 +790,28 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32962963" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32962963" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32962963" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2942603" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32962963" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2934519" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32962963" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32962963" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.32962963" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1056,7 +820,149 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加错误页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加错误页面" />
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/entity/MonitorLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback-spring.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/SpSubscribeWebApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1444">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/perm.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2356">
+          <caret line="124" column="43" selection-start-line="124" selection-start-column="43" selection-end-line="124" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/install/gradle/gradle-5.2.1/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/69ebf81bb97bdb3c9581c171762bb4929cb5289c/lombok-1.16.20-sources.jar!/lombok/Lombok.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+          <folding>
+            <element signature="e#2551#2569#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/util/shiro/ExceptionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/common/error.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/service/MoniLogService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/entity/MonitorLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback-spring.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/SpSubscribeWebApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1368">
+          <caret line="96" column="31" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/perm.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2356">
+          <caret line="124" column="43" selection-start-line="124" selection-start-column="43" selection-end-line="124" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/install/gradle/gradle-5.2.1/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/69ebf81bb97bdb3c9581c171762bb4929cb5289c/lombok-1.16.20-sources.jar!/lombok/Lombok.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+          <folding>
+            <element signature="e#2551#2569#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/service/MoniLogService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1180,7 +1086,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/entity/MonitorLog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
+        <state relative-caret-position="285">
           <caret line="15" column="5" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1209,24 +1115,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/util/shiro/ExceptionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="96" column="31" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
+        <state relative-caret-position="380">
+          <caret line="28" column="24" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/perm.sql">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="124" column="43" selection-start-line="124" selection-start-column="43" selection-end-line="124" selection-end-column="43" />
+        <state relative-caret-position="131">
+          <caret line="273" column="50" lean-forward="true" selection-start-line="273" selection-start-column="50" selection-end-line="273" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="jar://D:/install/gradle/gradle-5.2.1/caches/modules-2/files-2.1/org.projectlombok/lombok/1.16.20/69ebf81bb97bdb3c9581c171762bb4929cb5289c/lombok-1.16.20-sources.jar!/lombok/Lombok.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
+        <state relative-caret-position="95">
+          <caret line="25" column="3" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+          <folding>
+            <element signature="e#2551#2569#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/perm.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="124" column="43" selection-start-line="124" selection-start-column="43" selection-end-line="124" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/common/error.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/RoleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="230" column="42" selection-start-line="230" selection-start-column="42" selection-end-line="230" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/solid/subscribe/web/perm/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="88" column="36" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="36" />
         </state>
       </provider>
     </entry>

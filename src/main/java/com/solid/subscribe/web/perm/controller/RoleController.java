@@ -14,6 +14,8 @@ import com.solid.subscribe.web.perm.util.ResultHandler;
 import com.solid.subscribe.web.perm.util.shiro.ShiroConstants;
 import com.solid.subscribe.web.perm.vo.RolePageInfo;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,9 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "perm/role")
 public class RoleController {
+
+    private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
+
     @Autowired
     MoniLogService moniLogService;
     @Autowired
@@ -52,6 +57,7 @@ public class RoleController {
                     "",
                     request);
         }catch (Exception e){
+            logger.error("前往角色列表页面失败", e);
             e.printStackTrace();
         }
         return "perm/role/permRole";
@@ -67,6 +73,7 @@ public class RoleController {
             List<RolePageInfo> rolePageInfos=roleService.getRolePageInfo(roleParam,request);
             pageView.setResult(rolePageInfos);
         }catch(Exception e){
+            logger.error("查询角色信息失败", e);
             e.printStackTrace();
         }
         return pageView;
@@ -89,6 +96,7 @@ public class RoleController {
                     "",
                     request);
         }catch (Exception e){
+            logger.error("前往添加角色页面失败", e);
             e.printStackTrace();
         }
         return "perm/role/addRole";
@@ -117,6 +125,7 @@ public class RoleController {
             }
         }catch(Exception e){
             e.printStackTrace();
+            logger.error("添加角色信息失败", e);
             resultHandler.setMessage("创建角色失败");
         }
         return resultHandler;
@@ -144,6 +153,7 @@ public class RoleController {
                     "",
                     request);
         }catch (Exception e){
+            logger.error("前往编辑角色页面失败", e);
             e.printStackTrace();
         }
         return "perm/role/editRole";
@@ -172,6 +182,7 @@ public class RoleController {
             }
         }catch(Exception e){
             e.printStackTrace();
+            logger.error("编辑角色信息失败", e);
             resultHandler.setMessage("更改用户信息失败");
         }
         return resultHandler;
@@ -195,6 +206,7 @@ public class RoleController {
             }
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("删除角色信息失败", e);
             resultHandler.setMessage("角色删除失败!");
         }
         return resultHandler;
@@ -216,6 +228,7 @@ public class RoleController {
                     "",
                     request);
         }catch (Exception e){
+            logger.error("前往角色日志页面失败", e);
             e.printStackTrace();
         }
         return "perm/role/roleLog";

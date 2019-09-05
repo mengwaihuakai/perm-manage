@@ -17,6 +17,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +36,9 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "perm/user")
 public class UserController {
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
     @Autowired
@@ -54,6 +59,7 @@ public class UserController {
                     "",
                     request);
         }catch(Exception e){
+            logger.error("前往更新密码页面失败", e);
             e.printStackTrace();
         }
         return "common/updatePwd";
@@ -75,6 +81,7 @@ public class UserController {
             }
         }catch(Exception e){
             e.printStackTrace();
+            logger.error("更新密码失败", e);
             resultHandler.setMessage("Failed to modify password, contact administrator");
         }
         return resultHandler;
@@ -94,6 +101,7 @@ public class UserController {
                     "",
                     request);
         }catch (Exception e){
+            logger.error("前往用户列表页面失败", e);
             e.printStackTrace();
         }
         return "perm/user/permUser";
@@ -109,6 +117,7 @@ public class UserController {
             List<UserPageInfo> userPageInfos = userService.getUserPageInfo();
             pageView.setResult(userPageInfos);
         }catch(Exception e){
+            logger.error("查询用户信息失败", e);
             e.printStackTrace();
         }
         return pageView;
@@ -132,6 +141,7 @@ public class UserController {
                     "",
                     request);
         }catch (Exception e){
+            logger.error("前往创建用户页面失败", e);
             e.printStackTrace();
         }
         return "perm/user/addUser";
@@ -163,6 +173,7 @@ public class UserController {
             }
         }catch(Exception e){
             e.printStackTrace();
+            logger.error("保存用户信息失败", e);
             resultHandler.setMessage("创建用户失败");
         }
         return resultHandler;
@@ -188,6 +199,7 @@ public class UserController {
                     "",
                     request);
         }catch (Exception e){
+            logger.error("前往编辑页面失败", e);
             e.printStackTrace();
         }
         return "perm/user/editUser";
@@ -219,6 +231,7 @@ public class UserController {
             }
         }catch(Exception e){
             e.printStackTrace();
+            logger.error("更改用户信息失败", e);
             resultHandler.setMessage("更改用户信息失败");
         }
         return resultHandler;
@@ -242,6 +255,7 @@ public class UserController {
             }
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("删除用户信息失败", e);
             resultHandler.setMessage("用户删除失败!");
         }
         return resultHandler;
@@ -264,6 +278,7 @@ public class UserController {
                     "",
                     request);
         }catch (Exception e){
+            logger.error("前往用户日志页面失败", e);
             e.printStackTrace();
         }
         return "perm/user/userLog";
