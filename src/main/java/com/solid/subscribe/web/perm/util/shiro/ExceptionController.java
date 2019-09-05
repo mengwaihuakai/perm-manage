@@ -26,7 +26,7 @@ public class ExceptionController {
      */
     @ExceptionHandler(value = UnauthorizedException.class)//处理访问方法时权限不足问题
     public String UnauthorizedException(HttpServletRequest req, Exception e)  {
-        return "common/error";
+        return "common/permError";
     }
 
 

@@ -102,5 +102,8 @@ public class LoginController {
         return "index";
     }
 
-
+    @RequestMapping(value="/error")
+    public String error(){
+        return "common/error";
+    }
 }
