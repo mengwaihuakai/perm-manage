@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpSubscribeWebApplication {
+public class PermManageApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpSubscribeWebApplication.class, args);
+        SpringApplication.run(PermManageApplication.class, args);
     }
 
 }
