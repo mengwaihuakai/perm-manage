@@ -9,13 +9,8 @@
     <result property="createTime" column="create_time" />
     <result property="updateTime" column="update_time" />
 </resultMap>
-    <select  id="getRolesByUserId" parameterType="Integer" resultMap="role" >
+    <select  id="getRoleCodesByUserId" parameterType="Integer" resultType="String">
         select
-        id,
-        name,
-        status,
-        create_time,
-        update_time,
         code
         from perm_role
         where

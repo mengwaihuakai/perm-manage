@@ -11,7 +11,7 @@ import java.util.Set;
  */
 @Mapper
 public interface RoleMapper {
-    Set<Role> getRolesByUserId(Integer userId);
+    Set<String> getRoleCodesByUserId(Integer userId);
     /*查询所有有效角色*/
     List<Role> getValidRoles();
     /*条件查询所有角色*/

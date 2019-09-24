@@ -92,4 +92,23 @@
         where id=#{id}
     </delete>
 
+    <!--根据用户ID查询权限代码-->
+    <select  id="getPermCodesByUserId" parameterType="Integer" resultType="String">
+        select
+        code
+        from perm_permission
+        where
+        status=0 and id in
+          (select permission_id
+          from perm_role_permission
+          where
+          role_id in
+            (select
+            role_id
+            from
+            perm_user_role
+            where
+            user_id=#{id}))
+    </select>
+
 </mapper>

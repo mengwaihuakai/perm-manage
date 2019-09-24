@@ -43,21 +43,19 @@ public class MyShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         // 获取当前登陆用户
         User user = (User) SecurityUtils.getSubject().getPrincipal();
-        Set<Role> roles = roleMapper.getRolesByUserId(user.getId());
+        //保存角色
+        Set<String> roles = roleMapper.getRoleCodesByUserId(user.getId());
         if (null != roles && roles.size() > 0) {
-            for (Role role : roles) {
-                //保存角色
-                authorizationInfo.addRole(role.getCode());
-                // 角色对应的权限数据
-                Set<Permission> perms = permissionMapper.getPermissionsByRoleId(role
-                        .getId());
-                if (null != perms && perms.size() > 0) {
-                    // 授权角色下所有权限
-                    for (Permission perm : perms) {
-                        authorizationInfo.addStringPermission(perm
-                                .getCode());
-                    }
-                }
+            for (String code : roles) {
+                authorizationInfo.addRole(code);
+            }
+        }
+        // 权限数据
+        Set<String> perms = userMapper.getPermCodesByUserId(user.getId());
+        if (null != perms && perms.size() > 0) {
+            // 授权角色下所有权限
+            for (String code : perms) {
+                authorizationInfo.addStringPermission(code);
             }
         }
         return authorizationInfo;

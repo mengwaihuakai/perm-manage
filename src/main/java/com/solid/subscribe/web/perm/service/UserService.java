@@ -1,5 +1,6 @@
 package com.solid.subscribe.web.perm.service;
 
+import com.solid.subscribe.web.perm.dao.PermissionMapper;
 import com.solid.subscribe.web.perm.dao.RoleMapper;
 import com.solid.subscribe.web.perm.dao.UserMapper;
 import com.solid.subscribe.web.perm.dao.UserRoleMapper;
@@ -15,10 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by ZOOMY on 2018/8/8.
@@ -33,6 +31,8 @@ public class UserService {
     UserRoleMapper userRoleMapper;
     @Autowired
     MoniLogService moniLogService;
+    @Autowired
+    PermissionMapper permissionMapper;
 
     //装填登录时间和登录IP
     public void saveLoginIpAndTime(HttpServletRequest request, User user, ResultHandler resultHandler) throws Exception {
@@ -433,5 +433,10 @@ public class UserService {
                     content.toString(),
                     request);
         }
+    }
+
+    //获取权限信息
+    public Set<String> getPermCodesByUserId(Integer id){
+        return userMapper.getPermCodesByUserId(id);
     }
 }

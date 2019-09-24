@@ -4,6 +4,7 @@ import com.solid.subscribe.web.perm.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -24,5 +25,7 @@ public interface UserMapper {
     Integer saveUser(User user);
     /*根据用户ID删除*/
     Integer deleteById(Integer id);
+    /*根据用户ID查询权限代码*/
+    Set<String> getPermCodesByUserId(Integer id);
 
 }

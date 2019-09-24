@@ -35,11 +35,6 @@ public class RoleService {
     @Autowired
     MoniLogService moniLogService;
 
-
-    public Set<Role> getRolesByUserId(Integer userId) throws Exception {
-        return roleMapper.getRolesByUserId(userId);
-    }
-
     public List<Role> getValidRoles() throws Exception {
         return roleMapper.getValidRoles();
     }
