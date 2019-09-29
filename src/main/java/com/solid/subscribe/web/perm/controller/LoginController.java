@@ -62,6 +62,7 @@ public class LoginController {
                     //将权限信息返回
                     Map<String, Object> resultMap = new HashMap<>();
                     resultMap.put("perms", userService.getPermCodesByUserId(user.getId()));
+                    resultMap.put("account", account);
                     resultHandler.setResultMap(resultMap);
                     //将账号存到seesion中
                     session.setAttribute("userAccount",account);
