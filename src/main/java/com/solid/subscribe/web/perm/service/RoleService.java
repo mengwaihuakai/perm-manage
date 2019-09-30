@@ -40,7 +40,7 @@ public class RoleService {
     }
 
 
-    public List<RolePageInfo> getRolePageInfo(Role roleParam, HttpServletRequest request) throws Exception {
+    public List<RolePageInfo> getRolePageInfo(Role roleParam) throws Exception {
         List<RolePageInfo> rolePageInfoList = new LinkedList<>();
         //组装页面用户数据
         List<Role> roleList = roleMapper.getRoles(roleParam);

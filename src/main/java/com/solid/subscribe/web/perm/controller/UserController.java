@@ -1,6 +1,7 @@
 package com.solid.subscribe.web.perm.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.solid.subscribe.web.perm.entity.Role;
 import com.solid.subscribe.web.perm.entity.User;
@@ -28,7 +29,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ZOOMY on 2018/8/23.
@@ -204,6 +207,32 @@ public class UserController {
         }
         return "perm/user/editUser";
     }
+
+    //前后端分离时 vue-cli :edit/add user页面获取带入的数据
+    @RequiresPermissions(ShiroConstants.PERM_USER)
+    @GetMapping(value = "getRoleListAndUserInfo")
+    @ResponseBody
+    public ResultHandler getRoleListAndUserInfo(String id) {
+        ResultHandler resultHandler = new ResultHandler();
+        Map<String, Object> resultMap = new HashMap<>();
+        try {
+            //获取所有有效的role
+            resultMap.put("roleList", roleService.getValidRoles());
+            //获取该用户的信息
+            if (StringUtils.isNotBlank(id)) {
+                resultMap.put("userInfo", userService.getUserById(Integer.valueOf(id)));
+            }
+            resultHandler.setCode(0);
+            resultHandler.setResultMap(resultMap);
+        } catch (Exception e) {
+            resultHandler.setCode(1);
+            resultHandler.setMessage("获取数据失败");
+            logger.error("获取数据失败", e);
+            e.printStackTrace();
+        }
+        return resultHandler;
+    }
+
 
 
     @RequiresPermissions(ShiroConstants.PERM_USER)

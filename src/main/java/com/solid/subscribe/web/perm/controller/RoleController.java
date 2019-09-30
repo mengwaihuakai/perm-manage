@@ -13,6 +13,7 @@ import com.solid.subscribe.web.perm.util.PageView;
 import com.solid.subscribe.web.perm.util.ResultHandler;
 import com.solid.subscribe.web.perm.util.shiro.ShiroConstants;
 import com.solid.subscribe.web.perm.vo.RolePageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +23,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "perm/role")
@@ -67,10 +67,10 @@ public class RoleController {
     @RequiresPermissions(ShiroConstants.PERM_ROLE)
     @RequestMapping(value="search")
     @ResponseBody
-    public PageView search(Role roleParam, HttpServletRequest request){
+    public PageView search(Role roleParam){
         PageView pageView=new PageView();
         try{
-            List<RolePageInfo> rolePageInfos=roleService.getRolePageInfo(roleParam,request);
+            List<RolePageInfo> rolePageInfos=roleService.getRolePageInfo(roleParam);
             pageView.setResult(rolePageInfos);
         }catch(Exception e){
             logger.error("查询角色信息失败", e);
@@ -140,7 +140,7 @@ public class RoleController {
             //获取该角色的信息
             Role roleParam=new Role();
             roleParam.setId(Integer.valueOf(id));
-            List<RolePageInfo> rolePageInfos=roleService.getRolePageInfo(roleParam,request);
+            List<RolePageInfo> rolePageInfos=roleService.getRolePageInfo(roleParam);
             model.addAttribute("roleInfo", JSON.toJSONString(rolePageInfos.get(0), SerializerFeature.UseSingleQuotes));
             model.addAttribute("permissionList", JSON.toJSONString(permissionList, SerializerFeature.UseSingleQuotes));
             //保存访问日志
@@ -157,6 +157,33 @@ public class RoleController {
             e.printStackTrace();
         }
         return "perm/role/editRole";
+    }
+
+    //前后端分离时 vue-cli :edit/add role页面获取带入的数据
+    @RequiresPermissions(ShiroConstants.PERM_USER)
+    @GetMapping(value = "getPermListAndRoleInfo")
+    @ResponseBody
+    public ResultHandler getPermListAndRoleInfo(String id) {
+        ResultHandler resultHandler = new ResultHandler();
+        Map<String, Object> resultMap = new HashMap<>();
+        try {
+            //获取所有有效的role
+            resultMap.put("permList", permissionService.getValidPermissions());
+            //获取该用户的信息
+            if (StringUtils.isNotBlank(id)) {
+                Role roleParam=new Role();
+                roleParam.setId(Integer.valueOf(id));
+                resultMap.put("roleInfo", roleService.getRolePageInfo(roleParam).get(0));
+            }
+            resultHandler.setCode(0);
+            resultHandler.setResultMap(resultMap);
+        } catch (Exception e) {
+            resultHandler.setCode(1);
+            resultHandler.setMessage("获取数据失败");
+            logger.error("获取数据失败", e);
+            e.printStackTrace();
+        }
+        return resultHandler;
     }
 
     @RequiresPermissions(ShiroConstants.PERM_ROLE)
